@@ -30,6 +30,7 @@
 #define L3GD20_X_OFFSET -30
 #define L3GD20_Y_OFFSET -5
 #define L3GD20_Z_OFFSET 13
+#define SENSITIVITY 0.09
 
 struct L3GD20
 {
@@ -40,14 +41,14 @@ struct L3GD20
 	float X_val;
 	float Y_val;
 	float Z_val;
-};
+} typedef L3GD20;
 
 extern struct L3GD20 L3GD20_data;
 
-int L3GD20_init(SPI_HandleTypeDef *hspi_handle);
-void L3GD20_send(uint8_t address, uint8_t data);
-uint8_t L3GD20_recive(uint8_t addres);
-void L3GD20_readRawData();
-void L3GD20_convertRawData();
+int L3GD20_init(SPI_HandleTypeDef *hspi_handle, L3GD20 *L3GD20_data);
+void L3GD20_send(uint8_t address, uint8_t data, L3GD20 *L3GD20_data);
+uint8_t L3GD20_recive(uint8_t addres, L3GD20 *L3GD20_data);
+void L3GD20_readRawData(L3GD20 *L3GD20_data);
+void L3GD20_convertRawData(L3GD20 *L3GD20_data);
 
 #endif /* GYROSCOPE_H_ */

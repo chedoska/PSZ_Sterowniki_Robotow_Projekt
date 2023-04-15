@@ -157,10 +157,13 @@ int main(void)
 */
   uint8_t recive_var[2];
   uint8_t address_var[2];
+
+  L3GD20 L3GD20_data;
+
   int viwe = 0;
   char msg[100];
 
-  	  if(!L3GD20_init(&hspi5))
+  	  if(!L3GD20_init(&hspi5, &L3GD20_data))
   	  {
   		sprintf(msg, "not good :(\r\n");
   		HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);
@@ -192,12 +195,12 @@ int main(void)
 	  HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);*/
 
 	  HAL_Delay(10);
-	  L3GD20_readRawData();
-	  L3GD20_convertRawData();
+	  L3GD20_readRawData(&L3GD20_data);
+	  L3GD20_convertRawData(&L3GD20_data);
 	  Y_pos += L3GD20_data.Y_val * 0.01;
 
 	  //sprintf(msg, "XYZ: %d | %d | %d\r\n",L3GD20_data.X_raw, L3GD20_data.Y_raw, L3GD20_data.Z_raw );
-	  if(viwe % 10 == 1)
+	  if(viwe % 30 == 1)
 	  {
 		  sprintf(msg, "Y_obr = %f \r\n", Y_pos);
 		  //sprintf(msg, "XYZ: %d | %d | %d\r\n",L3GD20_data.X_raw, L3GD20_data.Y_raw, L3GD20_data.Z_raw );
