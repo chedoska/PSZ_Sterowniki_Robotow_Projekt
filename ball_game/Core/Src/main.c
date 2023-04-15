@@ -24,6 +24,7 @@
 /* USER CODE BEGIN Includes */
 #include "string.h"
 #include "gyroscope.h"
+#include "ball_control.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -118,56 +119,21 @@ int main(void)
 
   HAL_Delay(5000);
 
-  /*HAL_GPIO_WritePin(NCS_MEMS_SPI_GPIO_Port, NCS_MEMS_SPI_Pin, GPIO_PIN_RESET);
-  uint8_t test[2];
-  uint8_t addres[2];
-  addres[0] = 0x0F | 0x80;
-  addres[1] = 0;
-  test[1] = 69;
-  HAL_SPI_TransmitReceive(&hspi5, addres, test, 2, 500);
-  //HAL_Delay(500);*/
-  /*HAL_GPIO_WritePin(NCS_MEMS_SPI_GPIO_Port, NCS_MEMS_SPI_Pin, GPIO_PIN_SET);
-
   uint8_t recive_var[2];
   uint8_t address_var[2];
 
-  address_var[0] = 0x00 | 0x20;
-  address_var[1] = 0x0F;
-  HAL_GPIO_WritePin(NCS_MEMS_SPI_GPIO_Port, NCS_MEMS_SPI_Pin, GPIO_PIN_RESET);
-  HAL_SPI_Transmit(&hspi5, address_var, 2, 500);
-  HAL_GPIO_WritePin(NCS_MEMS_SPI_GPIO_Port, NCS_MEMS_SPI_Pin, GPIO_PIN_SET);
-
-  address_var[0] = 0x00 | 0x23;
-  address_var[1] = 0x10;
-  HAL_GPIO_WritePin(NCS_MEMS_SPI_GPIO_Port, NCS_MEMS_SPI_Pin, GPIO_PIN_RESET);
-  HAL_SPI_Transmit(&hspi5, address_var, 2, 500);
-  HAL_GPIO_WritePin(NCS_MEMS_SPI_GPIO_Port, NCS_MEMS_SPI_Pin, GPIO_PIN_SET);
-
-  address_var[0] = 0x00 | 0x21;
-  address_var[1] = 0x00;
-  HAL_GPIO_WritePin(NCS_MEMS_SPI_GPIO_Port, NCS_MEMS_SPI_Pin, GPIO_PIN_RESET);
-  HAL_SPI_Transmit(&hspi5, address_var, 2, 500);
-  HAL_GPIO_WritePin(NCS_MEMS_SPI_GPIO_Port, NCS_MEMS_SPI_Pin, GPIO_PIN_SET);
-
-  address_var[0] = 0x00 | 0x24;
-  address_var[1] = 0x10;
-  HAL_GPIO_WritePin(NCS_MEMS_SPI_GPIO_Port, NCS_MEMS_SPI_Pin, GPIO_PIN_RESET);
-  HAL_SPI_Transmit(&hspi5, address_var, 2, 500);
-  HAL_GPIO_WritePin(NCS_MEMS_SPI_GPIO_Port, NCS_MEMS_SPI_Pin, GPIO_PIN_SET);
-*/
-  uint8_t recive_var[2];
-  uint8_t address_var[2];
-
-  L3GD20 L3GD20_data;
+  L3GD20 m_gyro;
+  Ball_control_data m_ball;
 
   int viwe = 0;
   char msg[100];
 
-  	  if(!L3GD20_init(&hspi5, &L3GD20_data))
-  	  {
-  		sprintf(msg, "not good :(\r\n");
-  		HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);
-  	  }
+  if(!L3GD20_init(&hspi5, &m_gyro))
+  {
+	sprintf(msg, "not good :(\r\n");
+	HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);
+  }
+  ball_ctrl_init(&m_ball);
 
   float Y_pos = 0;
 
@@ -177,32 +143,16 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  /*recive_var[0] = 0;
-	  recive_var[1] = 0;
-	  address_var[0] = 0x80 | 0x28;
-	  address_var[1] = 0x00;
-
-	  HAL_Delay(300);
-
-	  HAL_GPIO_WritePin(NCS_MEMS_SPI_GPIO_Port, NCS_MEMS_SPI_Pin, GPIO_PIN_RESET);
-	  HAL_StatusTypeDef hal_status = HAL_SPI_TransmitReceive(&hspi5, address_var, recive_var, 2, 500);
-	  HAL_GPIO_WritePin(NCS_MEMS_SPI_GPIO_Port, NCS_MEMS_SPI_Pin, GPIO_PIN_SET);
-
-	  if(hal_status == HAL_OK)
-		  sprintf(msg, "OUT_X_H [%d]: %d \r\n", (viwe++)%8, recive_var[1]);
-	  else
-		  sprintf(msg, "nein [%d] \r\n", (viwe++)&8);
-	  HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);*/
-
 	  HAL_Delay(10);
-	  L3GD20_readRawData(&L3GD20_data);
-	  L3GD20_convertRawData(&L3GD20_data);
-	  Y_pos += L3GD20_data.Y_val * 0.01;
+	  L3GD20_readRawData(&m_gyro);
+	  L3GD20_convertRawData(&m_gyro);
+	  ball_update_ctrl_angles(&m_ball, &m_gyro, 10);
+	  //Y_pos += L3GD20_data.Y_val * 0.01;
 
 	  //sprintf(msg, "XYZ: %d | %d | %d\r\n",L3GD20_data.X_raw, L3GD20_data.Y_raw, L3GD20_data.Z_raw );
 	  if(viwe % 30 == 1)
 	  {
-		  sprintf(msg, "Y_obr = %f \r\n", Y_pos);
+		  sprintf(msg, "Y_obr = %f \r\n", m_ball.ctrlX_angle);
 		  //sprintf(msg, "XYZ: %d | %d | %d\r\n",L3GD20_data.X_raw, L3GD20_data.Y_raw, L3GD20_data.Z_raw );
 		  HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);
 	  }
@@ -210,7 +160,7 @@ int main(void)
 
 	  if(HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) == GPIO_PIN_SET)
 	  {
-		  Y_pos = 0;
+		  ball_ctrl_restetDrift(&m_ball);
 	  }
 
     /* USER CODE END WHILE */

@@ -1,0 +1,12 @@
+/*
+ * ball_controll.c
+ *
+ *  Created on: Apr 15, 2023
+ *      Author: chedo
+ */
+#include "ball_control.h"
+
+void update_ctrl_angles(Ball_control_data *ball_data, L3GD20 *L3GD20_data, float delta_time)
+{
+	ball_data->ctrlX_angle += L3GD20_data->X_val * delta_time;
+}

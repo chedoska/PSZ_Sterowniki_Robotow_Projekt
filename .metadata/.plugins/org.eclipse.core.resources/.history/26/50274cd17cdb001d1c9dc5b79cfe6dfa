@@ -1,0 +1,15 @@
+/*
+ * ball_control.h
+ *
+ *  Created on: Apr 15, 2023
+ *      Author: chedo
+ */
+
+#ifndef INC_BALL_CONTROL_H_
+#define INC_BALL_CONTROL_H_
+
+#include "gyroscope.h"
+
+
+
+#endif /* INC_BALL_CONTROL_H_ */
