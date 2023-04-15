@@ -1,0 +1,20 @@
+12:42:12 **** Incremental Build of configuration Debug for project ball_game ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/gyroscope.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/gyroscope.d" -MT"Core/Src/gyroscope.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/gyroscope.o"
+arm-none-eabi-gcc -o "ball_game.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\ball_game\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ball_game.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ball_game.elf
+ 
+arm-none-eabi-objdump -h -S  ball_game.elf  > "ball_game.list"
+arm-none-eabi-objcopy  -O binary  ball_game.elf  "ball_game.bin"
+arm-none-eabi-size   ball_game.elf 
+   text	   data	    bss	    dec	    hex	filename
+  32604	    484	   2188	  35276	   89cc	ball_game.elf
+Finished building: default.size.stdout
+ 
+Finished building: ball_game.bin
+ 
+Finished building: ball_game.list
+ 
+
+12:42:13 Build Finished. 0 errors, 0 warnings. (took 1s.99ms)
+

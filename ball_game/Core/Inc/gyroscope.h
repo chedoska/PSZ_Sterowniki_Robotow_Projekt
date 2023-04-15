@@ -27,12 +27,19 @@
 
 #define L3GD20_SPI_WAIT_TIME 500
 
+#define L3GD20_X_OFFSET -30
+#define L3GD20_Y_OFFSET -5
+#define L3GD20_Z_OFFSET 13
+
 struct L3GD20
 {
 	SPI_HandleTypeDef *hspi_handle;
 	int16_t X_raw;
 	int16_t Y_raw;
 	int16_t Z_raw;
+	float X_val;
+	float Y_val;
+	float Z_val;
 };
 
 extern struct L3GD20 L3GD20_data;
@@ -41,5 +48,6 @@ int L3GD20_init(SPI_HandleTypeDef *hspi_handle);
 void L3GD20_send(uint8_t address, uint8_t data);
 uint8_t L3GD20_recive(uint8_t addres);
 void L3GD20_readRawData();
+void L3GD20_convertRawData();
 
 #endif /* GYROSCOPE_H_ */

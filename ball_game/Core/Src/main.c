@@ -166,6 +166,8 @@ int main(void)
   		HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);
   	  }
 
+  float Y_pos = 0;
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -189,10 +191,25 @@ int main(void)
 		  sprintf(msg, "nein [%d] \r\n", (viwe++)&8);
 	  HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);*/
 
-	  HAL_Delay(300);
+	  HAL_Delay(10);
 	  L3GD20_readRawData();
-	  sprintf(msg, "XYZ: %d | %d | %d\r\n",L3GD20_data.X_raw, L3GD20_data.Y_raw, L3GD20_data.Z_raw );
-	  HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);
+	  L3GD20_convertRawData();
+	  Y_pos += L3GD20_data.Y_val * 0.01;
+
+	  //sprintf(msg, "XYZ: %d | %d | %d\r\n",L3GD20_data.X_raw, L3GD20_data.Y_raw, L3GD20_data.Z_raw );
+	  if(viwe % 10 == 1)
+	  {
+		  sprintf(msg, "Y_obr = %f \r\n", Y_pos);
+		  //sprintf(msg, "XYZ: %d | %d | %d\r\n",L3GD20_data.X_raw, L3GD20_data.Y_raw, L3GD20_data.Z_raw );
+		  HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);
+	  }
+	  viwe++;
+
+	  if(HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) == GPIO_PIN_SET)
+	  {
+		  Y_pos = 0;
+	  }
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

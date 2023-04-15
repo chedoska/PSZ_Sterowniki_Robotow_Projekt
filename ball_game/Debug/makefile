@@ -46,8 +46,8 @@ ball_game.bin \
 all: ball_game.elf secondary-outputs
 
 # Tool invocations
-ball_game.elf: $(OBJS) $(USER_OBJS) C:\Users\chedo\STM32CubeIDE\workspace_1.4.0\ball_game\STM32F429ZITX_FLASH.ld
-	arm-none-eabi-gcc -o "ball_game.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\chedo\STM32CubeIDE\workspace_1.4.0\ball_game\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ball_game.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+ball_game.elf: $(OBJS) $(USER_OBJS) C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\ball_game\STM32F429ZITX_FLASH.ld
+	arm-none-eabi-gcc -o "ball_game.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\ball_game\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ball_game.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

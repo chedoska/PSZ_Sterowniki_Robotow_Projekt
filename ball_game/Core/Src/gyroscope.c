@@ -89,6 +89,12 @@ void L3GD20_readRawData()
 	L3GD20_data.Z_raw |= L3GD20_recive(L3GD20_OUT_Z_H) << 8;
 }
 
+void L3GD20_convertRawData()
+{
+	L3GD20_data.X_val = (L3GD20_data.X_raw + L3GD20_X_OFFSET) * 0.09;
+	L3GD20_data.Y_val = (L3GD20_data.Y_raw + L3GD20_Y_OFFSET) * 0.09;
+	L3GD20_data.Z_val = (L3GD20_data.Z_raw + L3GD20_Z_OFFSET) * 0.09;
+}
 
 
 
