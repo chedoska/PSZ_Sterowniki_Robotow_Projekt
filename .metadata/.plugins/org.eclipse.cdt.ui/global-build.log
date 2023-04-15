@@ -284,3 +284,408 @@ Finished building: ball_game.bin
  
 Finished building: ball_game.list
  
+13:46:41 **** Incremental Build of configuration Debug for project ball_game ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/ball_controll.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/ball_controll.d" -MT"Core/Src/ball_controll.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ball_controll.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:133:2: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  sprintf(msg, "not good :(\r\n");
+  ^~~~~~~
+../Core/Src/main.c:133:2: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/main.c:133:2: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:134:29: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);
+                             ^~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:156:5: warning: incompatible implicit declaration of built-in function 'sprintf'
+     sprintf(msg, "X: %d , Y: %d \r\n", m_ball.X_screen_pos, m_ball.Y_screen_pos);
+     ^~~~~~~
+../Core/Src/main.c:156:5: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:158:32: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+     HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);
+                                ^~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:138:9: warning: unused variable 'Y_pos' [-Wunused-variable]
+   float Y_pos = 0;
+         ^~~~~
+../Core/Src/main.c:123:11: warning: unused variable 'address_var' [-Wunused-variable]
+   uint8_t address_var[2];
+           ^~~~~~~~~~~
+../Core/Src/main.c:122:11: warning: unused variable 'recive_var' [-Wunused-variable]
+   uint8_t recive_var[2];
+           ^~~~~~~~~~
+arm-none-eabi-gcc -o "ball_game.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\ball_game\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ball_game.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ball_game.elf
+ 
+arm-none-eabi-objdump -h -S  ball_game.elf  > "ball_game.list"
+arm-none-eabi-objcopy  -O binary  ball_game.elf  "ball_game.bin"
+arm-none-eabi-size   ball_game.elf 
+   text	   data	    bss	    dec	    hex	filename
+  36932	    484	   2164	  39580	   9a9c	ball_game.elf
+Finished building: default.size.stdout
+ 
+Finished building: ball_game.bin
+ 
+Finished building: ball_game.list
+ 
+13:48:00 **** Incremental Build of configuration Debug for project ball_game ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:133:2: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  sprintf(msg, "not good :(\r\n");
+  ^~~~~~~
+../Core/Src/main.c:133:2: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/main.c:133:2: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:134:29: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);
+                             ^~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:156:5: warning: incompatible implicit declaration of built-in function 'sprintf'
+     sprintf(msg, "X: %f , Y: %f \r\n", m_ball.X_screen_speed, m_ball.Y_screen_speed);
+     ^~~~~~~
+../Core/Src/main.c:156:5: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:158:32: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+     HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);
+                                ^~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:138:9: warning: unused variable 'Y_pos' [-Wunused-variable]
+   float Y_pos = 0;
+         ^~~~~
+../Core/Src/main.c:123:11: warning: unused variable 'address_var' [-Wunused-variable]
+   uint8_t address_var[2];
+           ^~~~~~~~~~~
+../Core/Src/main.c:122:11: warning: unused variable 'recive_var' [-Wunused-variable]
+   uint8_t recive_var[2];
+           ^~~~~~~~~~
+arm-none-eabi-gcc -o "ball_game.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\ball_game\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ball_game.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ball_game.elf
+ 
+arm-none-eabi-objdump -h -S  ball_game.elf  > "ball_game.list"
+arm-none-eabi-objcopy  -O binary  ball_game.elf  "ball_game.bin"
+arm-none-eabi-size   ball_game.elf 
+   text	   data	    bss	    dec	    hex	filename
+  36948	    484	   2164	  39596	   9aac	ball_game.elf
+Finished building: default.size.stdout
+ 
+Finished building: ball_game.bin
+ 
+Finished building: ball_game.list
+ 
+13:51:49 **** Incremental Build of configuration Debug for project ball_game ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/ball_controll.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/ball_controll.d" -MT"Core/Src/ball_controll.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ball_controll.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:133:2: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  sprintf(msg, "not good :(\r\n");
+  ^~~~~~~
+../Core/Src/main.c:133:2: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/main.c:133:2: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:134:29: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);
+                             ^~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:156:5: warning: incompatible implicit declaration of built-in function 'sprintf'
+     sprintf(msg, "X: %f , Y: %f \r\n", m_ball.X_screen_speed, m_ball.Y_screen_speed);
+     ^~~~~~~
+../Core/Src/main.c:156:5: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:158:32: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+     HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);
+                                ^~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:138:9: warning: unused variable 'Y_pos' [-Wunused-variable]
+   float Y_pos = 0;
+         ^~~~~
+../Core/Src/main.c:123:11: warning: unused variable 'address_var' [-Wunused-variable]
+   uint8_t address_var[2];
+           ^~~~~~~~~~~
+../Core/Src/main.c:122:11: warning: unused variable 'recive_var' [-Wunused-variable]
+   uint8_t recive_var[2];
+           ^~~~~~~~~~
+arm-none-eabi-gcc -o "ball_game.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\ball_game\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ball_game.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ball_game.elf
+ 
+arm-none-eabi-objdump -h -S  ball_game.elf  > "ball_game.list"
+arm-none-eabi-objcopy  -O binary  ball_game.elf  "ball_game.bin"
+arm-none-eabi-size   ball_game.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37068	    484	   2164	  39716	   9b24	ball_game.elf
+Finished building: default.size.stdout
+ 
+Finished building: ball_game.bin
+ 
+Finished building: ball_game.list
+ 
+13:53:31 **** Incremental Build of configuration Debug for project ball_game ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/ball_controll.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/ball_controll.d" -MT"Core/Src/ball_controll.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ball_controll.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:133:2: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  sprintf(msg, "not good :(\r\n");
+  ^~~~~~~
+../Core/Src/main.c:133:2: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/main.c:133:2: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:134:29: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);
+                             ^~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:156:5: warning: incompatible implicit declaration of built-in function 'sprintf'
+     sprintf(msg, "X: %f , Y: %f \r\n", m_ball.X_screen_pos, m_ball.Y_screen_pos);
+     ^~~~~~~
+../Core/Src/main.c:156:5: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:156:23: warning: format '%f' expects argument of type 'double', but argument 3 has type 'int' [-Wformat=]
+     sprintf(msg, "X: %f , Y: %f \r\n", m_ball.X_screen_pos, m_ball.Y_screen_pos);
+                      ~^                ~~~~~~~~~~~~~~~~~~~
+                      %d
+../Core/Src/main.c:156:31: warning: format '%f' expects argument of type 'double', but argument 4 has type 'int' [-Wformat=]
+     sprintf(msg, "X: %f , Y: %f \r\n", m_ball.X_screen_pos, m_ball.Y_screen_pos);
+                              ~^                             ~~~~~~~~~~~~~~~~~~~
+                              %d
+../Core/Src/main.c:158:32: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+     HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);
+                                ^~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:138:9: warning: unused variable 'Y_pos' [-Wunused-variable]
+   float Y_pos = 0;
+         ^~~~~
+../Core/Src/main.c:123:11: warning: unused variable 'address_var' [-Wunused-variable]
+   uint8_t address_var[2];
+           ^~~~~~~~~~~
+../Core/Src/main.c:122:11: warning: unused variable 'recive_var' [-Wunused-variable]
+   uint8_t recive_var[2];
+           ^~~~~~~~~~
+arm-none-eabi-gcc -o "ball_game.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\ball_game\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ball_game.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ball_game.elf
+ 
+arm-none-eabi-objdump -h -S  ball_game.elf  > "ball_game.list"
+arm-none-eabi-objcopy  -O binary  ball_game.elf  "ball_game.bin"
+arm-none-eabi-size   ball_game.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37036	    484	   2164	  39684	   9b04	ball_game.elf
+Finished building: default.size.stdout
+ 
+Finished building: ball_game.bin
+ 
+Finished building: ball_game.list
+ 
+13:53:58 **** Incremental Build of configuration Debug for project ball_game ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:133:2: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  sprintf(msg, "not good :(\r\n");
+  ^~~~~~~
+../Core/Src/main.c:133:2: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/main.c:133:2: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:134:29: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);
+                             ^~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:156:5: warning: incompatible implicit declaration of built-in function 'sprintf'
+     sprintf(msg, "X: %d , Y: %d \r\n", m_ball.X_screen_pos, m_ball.Y_screen_pos);
+     ^~~~~~~
+../Core/Src/main.c:156:5: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:158:32: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+     HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);
+                                ^~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:138:9: warning: unused variable 'Y_pos' [-Wunused-variable]
+   float Y_pos = 0;
+         ^~~~~
+../Core/Src/main.c:123:11: warning: unused variable 'address_var' [-Wunused-variable]
+   uint8_t address_var[2];
+           ^~~~~~~~~~~
+../Core/Src/main.c:122:11: warning: unused variable 'recive_var' [-Wunused-variable]
+   uint8_t recive_var[2];
+           ^~~~~~~~~~
+arm-none-eabi-gcc -o "ball_game.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\ball_game\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ball_game.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ball_game.elf
+ 
+arm-none-eabi-objdump -h -S  ball_game.elf  > "ball_game.list"
+arm-none-eabi-objcopy  -O binary  ball_game.elf  "ball_game.bin"
+arm-none-eabi-size   ball_game.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37036	    484	   2164	  39684	   9b04	ball_game.elf
+Finished building: default.size.stdout
+ 
+Finished building: ball_game.bin
+ 
+Finished building: ball_game.list
+ 
+13:55:23 **** Incremental Build of configuration Debug for project ball_game ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/ball_controll.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/ball_controll.d" -MT"Core/Src/ball_controll.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ball_controll.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:133:2: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  sprintf(msg, "not good :(\r\n");
+  ^~~~~~~
+../Core/Src/main.c:133:2: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/main.c:133:2: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:134:29: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);
+                             ^~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:156:5: warning: incompatible implicit declaration of built-in function 'sprintf'
+     sprintf(msg, "X: %f , Y: %f \r\n", m_ball.X_screen_pos, m_ball.Y_screen_pos);
+     ^~~~~~~
+../Core/Src/main.c:156:5: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:158:32: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+     HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);
+                                ^~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:138:9: warning: unused variable 'Y_pos' [-Wunused-variable]
+   float Y_pos = 0;
+         ^~~~~
+../Core/Src/main.c:123:11: warning: unused variable 'address_var' [-Wunused-variable]
+   uint8_t address_var[2];
+           ^~~~~~~~~~~
+../Core/Src/main.c:122:11: warning: unused variable 'recive_var' [-Wunused-variable]
+   uint8_t recive_var[2];
+           ^~~~~~~~~~
+arm-none-eabi-gcc -o "ball_game.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\ball_game\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ball_game.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ball_game.elf
+ 
+arm-none-eabi-objdump -h -S  ball_game.elf  > "ball_game.list"
+arm-none-eabi-objcopy  -O binary  ball_game.elf  "ball_game.bin"
+arm-none-eabi-size   ball_game.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37052	    484	   2164	  39700	   9b14	ball_game.elf
+Finished building: default.size.stdout
+ 
+Finished building: ball_game.bin
+ 
+Finished building: ball_game.list
+ 
+13:56:58 **** Incremental Build of configuration Debug for project ball_game ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/ball_controll.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/ball_controll.d" -MT"Core/Src/ball_controll.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ball_controll.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:133:2: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
+  sprintf(msg, "not good :(\r\n");
+  ^~~~~~~
+../Core/Src/main.c:133:2: warning: incompatible implicit declaration of built-in function 'sprintf'
+../Core/Src/main.c:133:2: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:134:29: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+  HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);
+                             ^~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:156:5: warning: incompatible implicit declaration of built-in function 'sprintf'
+     sprintf(msg, "X: %f , Y: %f \r\n", m_ball.X_screen_pos, m_ball.Y_screen_pos);
+     ^~~~~~~
+../Core/Src/main.c:156:5: note: include '<stdio.h>' or provide a declaration of 'sprintf'
+../Core/Src/main.c:158:32: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
+     HAL_UART_Transmit(&huart1, msg, (uint16_t)strlen(msg), 1000);
+                                ^~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:21:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:696:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'char *'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:138:9: warning: unused variable 'Y_pos' [-Wunused-variable]
+   float Y_pos = 0;
+         ^~~~~
+../Core/Src/main.c:123:11: warning: unused variable 'address_var' [-Wunused-variable]
+   uint8_t address_var[2];
+           ^~~~~~~~~~~
+../Core/Src/main.c:122:11: warning: unused variable 'recive_var' [-Wunused-variable]
+   uint8_t recive_var[2];
+           ^~~~~~~~~~
+arm-none-eabi-gcc -o "ball_game.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\ball_game\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="ball_game.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: ball_game.elf
+ 
+arm-none-eabi-objdump -h -S  ball_game.elf  > "ball_game.list"
+arm-none-eabi-objcopy  -O binary  ball_game.elf  "ball_game.bin"
+arm-none-eabi-size   ball_game.elf 
+   text	   data	    bss	    dec	    hex	filename
+  37052	    484	   2164	  39700	   9b14	ball_game.elf
+Finished building: default.size.stdout
+ 
+Finished building: ball_game.bin
+ 
+Finished building: ball_game.list
+ 
