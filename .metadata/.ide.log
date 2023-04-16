@@ -2288,3 +2288,9 @@
 2023-04-15 12:36:05,952 [INFO] IPUIPlugin:64 - create IPUIPlugin
 2023-04-15 12:36:05,952 [INFO] IPUIPlugin:64 - create IPUIPlugin
 2023-04-15 12:36:06,064 [INFO] OpenFileManager:294 - Restore cursor
+2023-04-16 23:57:42,957 [INFO] Activator:178 - 
+
+
+2023-04-16 23:57:42,959 [INFO] Activator:179 - !SESSION log4j initialized
+2023-04-16 23:58:34,282 [INFO] RetryExec:97 - I/O exception (org.apache.http.NoHttpResponseException) caught when processing request to {s}->https://download.eclipse.org:443: The target server failed to respond
+2023-04-16 23:58:34,284 [INFO] RetryExec:113 - Retrying request to {s}->https://download.eclipse.org:443

@@ -1,0 +1,4 @@
+ball_controll.c:9:6:ball_ctrl_init	16	static
+ball_controll.c:18:6:ball_ctrl_restetDrift	16	static
+ball_controll.c:25:6:ball_update_ctrl_angles	40	static
+ball_controll.c:33:6:ball_update_pos	48	static
