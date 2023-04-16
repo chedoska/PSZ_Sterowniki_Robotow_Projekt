@@ -56,17 +56,13 @@ void ball_update_pos(Ball_control_data *ball_data, int delta_time_ms)
 void ball_handle_collision(Ball_control_data *ball_data,
 						   int maxX, int minX, int maxY, int minY)
 {
-	if(ball_data->X_screen_pos > maxX || ball_data->X_screen_pos < minX)
+	if(ball_data->X_screen_pos >= maxX || ball_data->X_screen_pos <= minX)
 	{
 		ball_data->X_screen_speed = -ball_data->X_screen_speed;
-		ball_data->X_screen_pos = ball_data->X_screen_pos > maxX ? maxX : ball_data->X_screen_pos;
-		ball_data->X_screen_pos = ball_data->X_screen_pos < minX ? minX : ball_data->X_screen_pos;
 	}
-	if(ball_data->Y_screen_pos > maxY || ball_data->Y_screen_pos < minY)
+	if(ball_data->Y_screen_pos >= maxY || ball_data->Y_screen_pos <= minY)
 	{
 		ball_data->Y_screen_speed = -ball_data->Y_screen_speed;
-		ball_data->Y_screen_pos = ball_data->Y_screen_pos > maxY ? maxY : ball_data->Y_screen_pos;
-		ball_data->Y_screen_pos = ball_data->Y_screen_pos < minY ? minY : ball_data->Y_screen_pos;
 	}
 }
 

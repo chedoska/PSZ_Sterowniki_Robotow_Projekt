@@ -59,14 +59,11 @@ void ball_handle_collision(Ball_control_data *ball_data,
 	if(ball_data->X_screen_pos > maxX || ball_data->X_screen_pos < minX)
 	{
 		ball_data->X_screen_speed = -ball_data->X_screen_speed;
-		ball_data->X_screen_pos = ball_data->X_screen_pos > maxX ? maxX : ball_data->X_screen_pos;
-		ball_data->X_screen_pos = ball_data->X_screen_pos < minX ? minX : ball_data->X_screen_pos;
+		ball_data->X_screen_pos = ball_data->X_screen_pos > maxX
 	}
 	if(ball_data->Y_screen_pos > maxY || ball_data->Y_screen_pos < minY)
 	{
 		ball_data->Y_screen_speed = -ball_data->Y_screen_speed;
-		ball_data->Y_screen_pos = ball_data->Y_screen_pos > maxY ? maxY : ball_data->Y_screen_pos;
-		ball_data->Y_screen_pos = ball_data->Y_screen_pos < minY ? minY : ball_data->Y_screen_pos;
 	}
 }
 

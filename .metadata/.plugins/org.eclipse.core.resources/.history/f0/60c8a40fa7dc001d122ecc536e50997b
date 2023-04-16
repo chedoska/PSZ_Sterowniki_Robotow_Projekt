@@ -13,7 +13,7 @@
 
 #define PI_CONST 3.1415926
 #define GRAVITY_CONST 250
-#define FRICTION_CONST 50
+#define FRICTION_CONST 20
 
 struct Ball_control_data
 {
