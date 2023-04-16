@@ -60,10 +60,6 @@ void ball_handle_collision(Ball_control_data *ball_data,
 	{
 		ball_data->X_screen_speed = -ball_data->X_screen_speed;
 	}
-	if(ball_data->Y_screen_pos >= maxY || ball_data->Y_screen_pos <= minY)
-	{
-		ball_data->Y_screen_speed = -ball_data->Y_screen_speed;
-	}
 }
 
 

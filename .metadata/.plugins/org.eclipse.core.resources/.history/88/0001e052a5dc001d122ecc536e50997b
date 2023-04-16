@@ -156,24 +156,30 @@ int main(void)
   while (1)
   {
 	  L3GD20_readRawData(&m_gyro);
-	  L3GD20_convertRawData(&m_gyro);
-	  ball_update_ctrl_angles(&m_ball, &m_gyro, 10);
-	  ball_update_pos(&m_ball, 10);
-	  ball_handle_collision(&m_ball, 250, 0, 150, 0);
+	  	  L3GD20_convertRawData(&m_gyro);
+	  	  ball_update_ctrl_angles(&m_ball, &m_gyro, 10);
+	  	  ball_update_pos(&m_ball, 10);
 
-	  if(HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) == GPIO_PIN_SET)
-	  {
-	  	  ball_ctrl_restetDrift(&m_ball);
-	  }
+	 /* if(x == 0)
+	  		change_x = 3;
+	  	if(x >= 180)
+	  		change_x = -3;
+	  	if(y == 0)
+	  		change_y = 3;
+	  	if(y >= 260)
+	  		change_y = -3;
 
-	  HAL_LTDC_SetWindowPosition_NoReload(&hltdc, m_ball.Y_screen_pos, m_ball.X_screen_pos, 1);
-	  /* Ask for LTDC reload within next vertical blanking*/
-	  ReloadFlag = 0;
-	  HAL_LTDC_Reload(&hltdc,LTDC_SRCR_VBR);
+	  	x += change_x;
+	  	y += change_y;*/
 
-	  while(ReloadFlag == 0) { }
+	      HAL_LTDC_SetWindowPosition_NoReload(&hltdc, m_ball.Y_screen_pos, m_ball.X_screen_pos, 1);
+	      /* Ask for LTDC reload within next vertical blanking*/
+	      ReloadFlag = 0;
+	      HAL_LTDC_Reload(&hltdc,LTDC_SRCR_VBR);
 
-	  HAL_Delay(10);
+	      while(ReloadFlag == 0) { }
+
+	      HAL_Delay(10);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

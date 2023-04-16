@@ -159,21 +159,16 @@ int main(void)
 	  L3GD20_convertRawData(&m_gyro);
 	  ball_update_ctrl_angles(&m_ball, &m_gyro, 10);
 	  ball_update_pos(&m_ball, 10);
-	  ball_handle_collision(&m_ball, 250, 0, 150, 0);
+	  ball_handle_collision(&m_ball, 200, 0, 200, 0)
 
-	  if(HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) == GPIO_PIN_SET)
-	  {
-	  	  ball_ctrl_restetDrift(&m_ball);
-	  }
+	      HAL_LTDC_SetWindowPosition_NoReload(&hltdc, m_ball.Y_screen_pos, m_ball.X_screen_pos, 1);
+	      /* Ask for LTDC reload within next vertical blanking*/
+	      ReloadFlag = 0;
+	      HAL_LTDC_Reload(&hltdc,LTDC_SRCR_VBR);
 
-	  HAL_LTDC_SetWindowPosition_NoReload(&hltdc, m_ball.Y_screen_pos, m_ball.X_screen_pos, 1);
-	  /* Ask for LTDC reload within next vertical blanking*/
-	  ReloadFlag = 0;
-	  HAL_LTDC_Reload(&hltdc,LTDC_SRCR_VBR);
+	      while(ReloadFlag == 0) { }
 
-	  while(ReloadFlag == 0) { }
-
-	  HAL_Delay(10);
+	      HAL_Delay(10);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

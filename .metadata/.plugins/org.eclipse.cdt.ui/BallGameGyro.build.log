@@ -1,18 +1,17 @@
-00:17:57 **** Incremental Build of configuration Debug for project BallGameGyro ****
+00:27:01 **** Incremental Build of configuration Debug for project BallGameGyro ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/Src/ball_controll.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/ball_controll.d" -MT"Core/Src/ball_controll.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ball_controll.o"
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'main':
 ../Core/Src/main.c:115:11: warning: unused variable 'index' [-Wunused-variable]
   uint32_t index = 0;
            ^~~~~
 ../Core/Src/main.c: In function 'MX_LTDC_Init':
-../Core/Src/main.c:367:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+../Core/Src/main.c:361:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
    ili9341_Init();
    ^~~~~~~~~~~~
    MX_TIM1_Init
 At top level:
-../Core/Src/main.c:717:13: warning: 'PicturesPosition' defined but not used [-Wunused-function]
+../Core/Src/main.c:711:13: warning: 'PicturesPosition' defined but not used [-Wunused-function]
  static void PicturesPosition(uint32_t* x1, uint32_t* y1, uint32_t* x2, uint32_t* y2, uint32_t index)
              ^~~~~~~~~~~~~~~~
 arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -22,7 +21,7 @@ arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
 arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
 arm-none-eabi-size   BallGameGyro.elf 
    text	   data	    bss	    dec	    hex	filename
-  44144	     24	   3032	  47200	   b860	BallGameGyro.elf
+  44400	     24	   3032	  47456	   b960	BallGameGyro.elf
 Finished building: default.size.stdout
  
 Finished building: BallGameGyro.bin
@@ -30,5 +29,5 @@ Finished building: BallGameGyro.bin
 Finished building: BallGameGyro.list
  
 
-00:17:58 Build Finished. 0 errors, 3 warnings. (took 1s.425ms)
+00:27:02 Build Finished. 0 errors, 3 warnings. (took 1s.352ms)
 
