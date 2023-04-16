@@ -1,0 +1,2 @@
+stm32f4xx_hal_msp.c:49:6:HAL_LTDC_MspInit	1
+stm32f4xx_hal_msp.c:138:6:HAL_LTDC_MspDeInit	1
