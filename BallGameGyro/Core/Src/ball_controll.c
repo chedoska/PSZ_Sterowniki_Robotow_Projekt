@@ -53,6 +53,18 @@ void ball_update_pos(Ball_control_data *ball_data, int delta_time_ms)
 	ball_data->Y_screen_pos += (ball_data->Y_screen_speed * delta_time);
 }
 
+void ball_handle_collision(Ball_control_data *ball_data,
+						   int maxX, int minX, int maxY, int minY)
+{
+	if(ball_data->X_screen_pos >= maxX)
+	{
+		ball_data->X_screen_speed = -ball_data->X_screen_speed;
+	}
+	else if(ball_data->X_screen_pos <= minX)
+	{
+		ball_data->X_screen_speed = -ball_data->X_screen_speed;
+	}
+}
 
 
 

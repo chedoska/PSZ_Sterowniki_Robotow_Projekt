@@ -2023,13 +2023,13 @@ int main(void)
  800154c:	2901      	cmp	r1, #1
  800154e:	d11f      	bne.n	8001590 <main+0x120>
 	  {
-		  sprintf(msg, "X: %f , Y: %f \r\n", m_ball.X_screen_pos, m_ball.Y_screen_pos);
- 8001550:	6f3b      	ldr	r3, [r7, #112]	; 0x70
+		  sprintf(msg, "X: %f , Y: %f \r\n", m_ball.Y_screen_pos, m_ball.X_screen_pos);
+ 8001550:	6f7b      	ldr	r3, [r7, #116]	; 0x74
  8001552:	4618      	mov	r0, r3
  8001554:	f7ff f808 	bl	8000568 <__aeabi_f2d>
  8001558:	4605      	mov	r5, r0
  800155a:	460e      	mov	r6, r1
- 800155c:	6f7b      	ldr	r3, [r7, #116]	; 0x74
+ 800155c:	6f3b      	ldr	r3, [r7, #112]	; 0x70
  800155e:	4618      	mov	r0, r3
  8001560:	f7ff f802 	bl	8000568 <__aeabi_f2d>
  8001564:	4603      	mov	r3, r0

@@ -146,6 +146,8 @@ int main(void)
 
   L3GD20 m_gyro;
   Ball_control_data m_ball;
+  L3GD20_init(&hspi5, &m_gyro);
+  ball_ctrl_init(&m_ball, 100, 100);
 
   /* USER CODE END 2 */
 
@@ -153,7 +155,12 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if(x == 0)
+	  L3GD20_readRawData(&m_gyro);
+	  	  L3GD20_convertRawData(&m_gyro);
+	  	  ball_update_ctrl_angles(&m_ball, &m_gyro, 10);
+	  	  ball_update_pos(&m_ball, 10);
+
+	 /* if(x == 0)
 	  		change_x = 3;
 	  	if(x >= 180)
 	  		change_x = -3;
@@ -163,9 +170,9 @@ int main(void)
 	  		change_y = -3;
 
 	  	x += change_x;
-	  	y += change_y;
+	  	y += change_y;*/
 
-	      HAL_LTDC_SetWindowPosition_NoReload(&hltdc, x, y, 1);
+	      HAL_LTDC_SetWindowPosition_NoReload(&hltdc, m_ball.Y_screen_pos, m_ball.X_screen_pos, 1);
 	      /* Ask for LTDC reload within next vertical blanking*/
 	      ReloadFlag = 0;
 	      HAL_LTDC_Reload(&hltdc,LTDC_SRCR_VBR);
@@ -407,7 +414,7 @@ static void MX_LTDC_Init(void)
   pLayerCfg1.Alpha0 = 255;
   pLayerCfg1.BlendingFactor1 = LTDC_BLENDING_FACTOR1_PAxCA;
   pLayerCfg1.BlendingFactor2 = LTDC_BLENDING_FACTOR2_PAxCA;
-  pLayerCfg1.FBStartAdress = 0;
+  pLayerCfg1.FBStartAdress = (uint32_t)&ball2;
   pLayerCfg1.ImageWidth = 56;
   pLayerCfg1.ImageHeight = 57;
   pLayerCfg1.Backcolor.Blue = 0;

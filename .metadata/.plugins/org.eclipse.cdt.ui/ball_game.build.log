@@ -1,6 +1,5 @@
-13:56:58 **** Incremental Build of configuration Debug for project ball_game ****
+00:06:47 **** Incremental Build of configuration Debug for project ball_game ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/Src/ball_controll.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/ball_controll.d" -MT"Core/Src/ball_controll.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ball_controll.o"
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'main':
 ../Core/Src/main.c:133:2: warning: implicit declaration of function 'sprintf' [-Wimplicit-function-declaration]
@@ -19,7 +18,7 @@ In file included from ../Core/Inc/stm32f4xx_hal_conf.h:404:0,
  HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
                    ^~~~~~~~~~~~~~~~~
 ../Core/Src/main.c:156:5: warning: incompatible implicit declaration of built-in function 'sprintf'
-     sprintf(msg, "X: %f , Y: %f \r\n", m_ball.X_screen_pos, m_ball.Y_screen_pos);
+     sprintf(msg, "X: %f , Y: %f \r\n", m_ball.Y_screen_pos, m_ball.X_screen_pos);
      ^~~~~~~
 ../Core/Src/main.c:156:5: note: include '<stdio.h>' or provide a declaration of 'sprintf'
 ../Core/Src/main.c:158:32: warning: pointer targets in passing argument 2 of 'HAL_UART_Transmit' differ in signedness [-Wpointer-sign]
@@ -56,5 +55,5 @@ Finished building: ball_game.bin
 Finished building: ball_game.list
  
 
-13:57:00 Build Finished. 0 errors, 8 warnings. (took 1s.235ms)
+00:06:48 Build Finished. 0 errors, 8 warnings. (took 1s.562ms)
 
