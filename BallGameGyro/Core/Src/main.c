@@ -76,8 +76,6 @@ TIM_HandleTypeDef htim1;
 
 UART_HandleTypeDef huart1;
 
-HCD_HandleTypeDef hhcd_USB_OTG_HS;
-
 SDRAM_HandleTypeDef hsdram1;
 
 /* USER CODE BEGIN PV */
@@ -90,12 +88,11 @@ static void MX_GPIO_Init(void);
 static void MX_CRC_Init(void);
 static void MX_DMA2D_Init(void);
 static void MX_FMC_Init(void);
-static void MX_I2C3_Init(void);
 static void MX_LTDC_Init(void);
 static void MX_SPI5_Init(void);
 static void MX_TIM1_Init(void);
 static void MX_USART1_UART_Init(void);
-static void MX_USB_OTG_HS_HCD_Init(void);
+static void MX_I2C3_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -136,12 +133,11 @@ int main(void)
   MX_CRC_Init();
   MX_DMA2D_Init();
   MX_FMC_Init();
-  MX_I2C3_Init();
   MX_LTDC_Init();
   MX_SPI5_Init();
   MX_TIM1_Init();
   MX_USART1_UART_Init();
-  MX_USB_OTG_HS_HCD_Init();
+  MX_I2C3_Init();
   /* USER CODE BEGIN 2 */
 
   L3GD20 m_gyro;
@@ -159,7 +155,7 @@ int main(void)
 	  L3GD20_convertRawData(&m_gyro);
 	  ball_update_ctrl_angles(&m_ball, &m_gyro, 10);
 	  ball_update_pos(&m_ball, 10);
-	  ball_handle_collision(&m_ball, 250, 0, 150, 0);
+	  ball_handle_collision(&m_ball, 260, 0, 180, 0);
 
 	  if(HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) == GPIO_PIN_SET)
 	  {
@@ -187,53 +183,50 @@ int main(void)
   */
 void SystemClock_Config(void)
 {
-	RCC_ClkInitTypeDef RCC_ClkInitStruct;
-	  RCC_OscInitTypeDef RCC_OscInitStruct;
-	  RCC_PeriphCLKInitTypeDef  PeriphClkInitStruct;
+  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+  RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
 
-	  /* Enable Power Control clock */
-	  __HAL_RCC_PWR_CLK_ENABLE();
+  /** Configure the main internal regulator output voltage
+  */
+  __HAL_RCC_PWR_CLK_ENABLE();
+  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE3);
+  /** Initializes the RCC Oscillators according to the specified parameters
+  * in the RCC_OscInitTypeDef structure.
+  */
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+  RCC_OscInitStruct.PLL.PLLM = 8;
+  RCC_OscInitStruct.PLL.PLLN = 144;
+  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+  RCC_OscInitStruct.PLL.PLLQ = 3;
+  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /** Initializes the CPU, AHB and APB buses clocks
+  */
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
-	  /* The voltage scaling allows optimizing the power consumption when the device is
-	     clocked below the maximum system frequency, to update the voltage scaling value
-	     regarding system frequency refer to product datasheet.  */
-	  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
-
-	  /*##-1- System Clock Configuration #########################################*/
-	  /* Enable HSE Oscillator and activate PLL with HSE as source */
-	  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
-	  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
-	  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-	  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-	  RCC_OscInitStruct.PLL.PLLM = 8;
-	  RCC_OscInitStruct.PLL.PLLN = 360;
-	  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
-	  RCC_OscInitStruct.PLL.PLLQ = 7;
-	  HAL_RCC_OscConfig(&RCC_OscInitStruct);
-
-	  /* Activate the Over-Drive mode */
-	  HAL_PWREx_EnableOverDrive();
-
-	  /* Select PLL as system clock source and configure the HCLK, PCLK1 and PCLK2
-	     clocks dividers */
-	  RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2);
-	  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-	  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-	  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
-	  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
-	  HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5);
-
-	  /*##-2- LTDC Clock Configuration ###########################################*/
-	  /* LCD clock configuration */
-	  /* PLLSAI_VCO Input = HSE_VALUE/PLL_M = 1 MHz */
-	  /* PLLSAI_VCO Output = PLLSAI_VCO Input * PLLSAIN = 192 MHz */
-	  /* PLLLCDCLK = PLLSAI_VCO Output/PLLSAIR = 192/4 = 48 MHz */
-	  /* LTDC clock frequency = PLLLCDCLK / RCC_PLLSAIDIVR_8 = 48/8 = 6 MHz */
-	  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_LTDC;
-	  PeriphClkInitStruct.PLLSAI.PLLSAIN = 192;
-	  PeriphClkInitStruct.PLLSAI.PLLSAIR = 4;
-	  PeriphClkInitStruct.PLLSAIDivR = RCC_PLLSAIDIVR_8;
-	  HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct);
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_LTDC;
+  PeriphClkInitStruct.PLLSAI.PLLSAIN = 192;
+  PeriphClkInitStruct.PLLSAI.PLLSAIR = 4;
+  PeriphClkInitStruct.PLLSAIDivR = RCC_PLLSAIDIVR_8;
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
+  {
+    Error_Handler();
+  }
 }
 
 /**
@@ -411,7 +404,7 @@ static void MX_LTDC_Init(void)
   pLayerCfg1.Alpha0 = 255;
   pLayerCfg1.BlendingFactor1 = LTDC_BLENDING_FACTOR1_PAxCA;
   pLayerCfg1.BlendingFactor2 = LTDC_BLENDING_FACTOR2_PAxCA;
-  pLayerCfg1.FBStartAdress = (uint32_t)&ball2;
+  pLayerCfg1.FBStartAdress = 0;
   pLayerCfg1.ImageWidth = 56;
   pLayerCfg1.ImageHeight = 57;
   pLayerCfg1.Backcolor.Blue = 0;
@@ -423,6 +416,7 @@ static void MX_LTDC_Init(void)
   }
   /* USER CODE BEGIN LTDC_Init 2 */
   pLayerCfg1.FBStartAdress = (uint32_t)&ball2;
+  HAL_LTDC_ConfigLayer(&hltdc, &pLayerCfg1, 1);
   /* USER CODE END LTDC_Init 2 */
 
 }
@@ -544,40 +538,6 @@ static void MX_USART1_UART_Init(void)
 
 }
 
-/**
-  * @brief USB_OTG_HS Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_USB_OTG_HS_HCD_Init(void)
-{
-
-  /* USER CODE BEGIN USB_OTG_HS_Init 0 */
-
-  /* USER CODE END USB_OTG_HS_Init 0 */
-
-  /* USER CODE BEGIN USB_OTG_HS_Init 1 */
-
-  /* USER CODE END USB_OTG_HS_Init 1 */
-  hhcd_USB_OTG_HS.Instance = USB_OTG_HS;
-  hhcd_USB_OTG_HS.Init.Host_channels = 12;
-  hhcd_USB_OTG_HS.Init.speed = HCD_SPEED_FULL;
-  hhcd_USB_OTG_HS.Init.dma_enable = DISABLE;
-  hhcd_USB_OTG_HS.Init.phy_itface = USB_OTG_EMBEDDED_PHY;
-  hhcd_USB_OTG_HS.Init.Sof_enable = DISABLE;
-  hhcd_USB_OTG_HS.Init.low_power_enable = DISABLE;
-  hhcd_USB_OTG_HS.Init.vbus_sensing_enable = DISABLE;
-  hhcd_USB_OTG_HS.Init.use_external_vbus = DISABLE;
-  if (HAL_HCD_Init(&hhcd_USB_OTG_HS) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN USB_OTG_HS_Init 2 */
-
-  /* USER CODE END USB_OTG_HS_Init 2 */
-
-}
-
 /* FMC initialization function */
 static void MX_FMC_Init(void)
 {
@@ -687,6 +647,20 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(BOOT1_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : OTG_HS_ID_Pin OTG_HS_DM_Pin OTG_HS_DP_Pin */
+  GPIO_InitStruct.Pin = OTG_HS_ID_Pin|OTG_HS_DM_Pin|OTG_HS_DP_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  GPIO_InitStruct.Alternate = GPIO_AF12_OTG_HS_FS;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : VBUS_HS_Pin */
+  GPIO_InitStruct.Pin = VBUS_HS_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(VBUS_HS_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : TE_Pin */
   GPIO_InitStruct.Pin = TE_Pin;

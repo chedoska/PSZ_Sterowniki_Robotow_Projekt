@@ -12,8 +12,9 @@
 #include "math.h"
 
 #define PI_CONST 3.1415926
-#define GRAVITY_CONST 250
+#define GRAVITY_CONST 450
 #define FRICTION_CONST 50
+#define WALL_ENERGY_LOSS_CONST 0.65
 
 struct Ball_control_data
 {
