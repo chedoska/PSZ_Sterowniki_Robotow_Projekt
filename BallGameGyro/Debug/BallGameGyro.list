@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  00020010  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00019780  00000000  00000000  00020040  2**0
+ 12 .debug_info   00019697  00000000  00000000  00020040  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_abbrev 000031a4  00000000  00000000  000397c0  2**0
+ 13 .debug_abbrev 0000316c  00000000  00000000  000396d7  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_aranges 00001780  00000000  00000000  0003c968  2**3
+ 14 .debug_aranges 00001778  00000000  00000000  0003c848  2**3
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_ranges 00001610  00000000  00000000  0003e0e8  2**3
+ 15 .debug_ranges 00001608  00000000  00000000  0003dfc0  2**3
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_macro  00026b47  00000000  00000000  0003f6f8  2**0
+ 16 .debug_macro  00026b47  00000000  00000000  0003f5c8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_line   000129e4  00000000  00000000  0006623f  2**0
+ 17 .debug_line   000129d0  00000000  00000000  0006610f  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    000e64cd  00000000  00000000  00078c23  2**0
+ 18 .debug_str    000e6492  00000000  00000000  00078adf  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  0015f0f0  2**0
+ 19 .comment      0000007b  00000000  00000000  0015ef71  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000066a0  00000000  00000000  0015f16c  2**2
+ 20 .debug_frame  00006678  00000000  00000000  0015efec  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -1029,10 +1029,10 @@ Disassembly of section .text:
  8000d2a:	bf00      	nop
 
 08000d2c <ball_ctrl_init>:
- *      Author: chedo
  */
 #include "ball_control.h"
 
+// Inicjalizacja srtruktury do zarządzania pozycją i fizyką piłki
 void ball_ctrl_init(Ball_control_data *ball_data, uint16_t X_start_pos, uint16_t Y_start_pos)
 {
  8000d2c:	b580      	push	{r7, lr}
@@ -1074,6 +1074,7 @@ void ball_ctrl_init(Ball_control_data *ball_data, uint16_t X_start_pos, uint16_t
 
 08000d7a <ball_ctrl_restetDrift>:
 
+// Usuwanie dryftu powstałęgo przy całkowaniu pedkości obrotowych
 void ball_ctrl_restetDrift(Ball_control_data *ball_data)
 {
  8000d7a:	b480      	push	{r7}
@@ -1101,7 +1102,10 @@ void ball_ctrl_restetDrift(Ball_control_data *ball_data)
 	...
 
 08000da8 <ball_update_ctrl_angles>:
-
+ * int delta_time_ms - czas jaki upłyną od poprzedniego pomiaru wyrażony w milisekundach
+ * L3GD20 *L3GD20_data - wskaźnik do struktury z danymi odczytu żyroskoou
+ * Ball_control_data *ball_data - wskaźnik do struktury zarządzającej pozycją piłki.
+ */
 void ball_update_ctrl_angles(Ball_control_data *ball_data, L3GD20 *L3GD20_data, int delta_time_ms)
 {
  8000da8:	b590      	push	{r4, r7, lr}
@@ -1163,7 +1167,10 @@ void ball_update_ctrl_angles(Ball_control_data *ball_data, L3GD20 *L3GD20_data, 
  8000e3c:	00000000 	.word	0x00000000
 
 08000e40 <ball_update_pos>:
-
+/*
+ * Ball_control_data *ball_data - wskaźnik do struktury zarządzającej pozycją piłki.
+ * int delta_time_ms - czas jaki upłyną od poprzedniego pomiaru wyrażony w milisekundach
+ */
 void ball_update_pos(Ball_control_data *ball_data, int delta_time_ms)
 {
  8000e40:	b590      	push	{r4, r7, lr}
@@ -1185,7 +1192,7 @@ void ball_update_pos(Ball_control_data *ball_data, int delta_time_ms)
  8000e66:	f7ff fd91 	bl	800098c <__aeabi_d2f>
  8000e6a:	4603      	mov	r3, r0
  8000e6c:	617b      	str	r3, [r7, #20]
-	float X_radAngle = (ball_data->ctrlX_angle * PI_CONST / 180.0);
+	float X_radAngle = (ball_data->ctrlX_angle * PI_CONST / 180.0);				// Wyrażenie orientacji w radianch
  8000e6e:	687b      	ldr	r3, [r7, #4]
  8000e70:	681b      	ldr	r3, [r3, #0]
  8000e72:	4618      	mov	r0, r3
@@ -1207,7 +1214,7 @@ void ball_update_pos(Ball_control_data *ball_data, int delta_time_ms)
  8000e9c:	f7ff fd76 	bl	800098c <__aeabi_d2f>
  8000ea0:	4603      	mov	r3, r0
  8000ea2:	613b      	str	r3, [r7, #16]
-	float Y_radAngle = (ball_data->ctrlY_angle * PI_CONST / 180.0);
+	float Y_radAngle = (ball_data->ctrlY_angle * PI_CONST / 180.0);				// dla osi X i Y
  8000ea4:	687b      	ldr	r3, [r7, #4]
  8000ea6:	685b      	ldr	r3, [r3, #4]
  8000ea8:	4618      	mov	r0, r3
@@ -1230,7 +1237,7 @@ void ball_update_pos(Ball_control_data *ball_data, int delta_time_ms)
  8000ed6:	4603      	mov	r3, r0
  8000ed8:	60fb      	str	r3, [r7, #12]
 
-	ball_data->X_screen_speed += sinf(X_radAngle) * GRAVITY_CONST * delta_time;
+	ball_data->X_screen_speed += sinf(X_radAngle) * GRAVITY_CONST * delta_time;	// całkowanie przyśpieszenia by otrzymać
  8000eda:	687b      	ldr	r3, [r7, #4]
  8000edc:	ed93 8a05 	vldr	s16, [r3, #20]
  8000ee0:	ed97 0a04 	vldr	s0, [r7, #16]
@@ -1243,7 +1250,7 @@ void ball_update_pos(Ball_control_data *ball_data, int delta_time_ms)
  8000efc:	ee78 7a27 	vadd.f32	s15, s16, s15
  8000f00:	687b      	ldr	r3, [r7, #4]
  8000f02:	edc3 7a05 	vstr	s15, [r3, #20]
-	ball_data->Y_screen_speed += sinf(Y_radAngle) * GRAVITY_CONST * delta_time;
+	ball_data->Y_screen_speed += sinf(Y_radAngle) * GRAVITY_CONST * delta_time;	// prędkośc chwilową piłki
  8000f06:	687b      	ldr	r3, [r7, #4]
  8000f08:	ed93 8a06 	vldr	s16, [r3, #24]
  8000f0c:	ed97 0a03 	vldr	s0, [r7, #12]
@@ -1257,13 +1264,13 @@ void ball_update_pos(Ball_control_data *ball_data, int delta_time_ms)
  8000f2c:	687b      	ldr	r3, [r7, #4]
  8000f2e:	edc3 7a06 	vstr	s15, [r3, #24]
 
-	if(ball_data->X_screen_speed > 0)
+	if(ball_data->X_screen_speed > 0)											// Uwzględnienie oporu siły tarcia
  8000f32:	687b      	ldr	r3, [r7, #4]
  8000f34:	edd3 7a05 	vldr	s15, [r3, #20]
  8000f38:	eef5 7ac0 	vcmpe.f32	s15, #0.0
  8000f3c:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
  8000f40:	dd0e      	ble.n	8000f60 <ball_update_pos+0x120>
-		ball_data->X_screen_speed -= FRICTION_CONST * delta_time;
+		ball_data->X_screen_speed -= FRICTION_CONST * delta_time;				// W przeciwnym kierunku do prędkosci
  8000f42:	687b      	ldr	r3, [r7, #4]
  8000f44:	ed93 7a05 	vldr	s14, [r3, #20]
  8000f48:	edd7 7a05 	vldr	s15, [r7, #20]
@@ -1311,7 +1318,7 @@ void ball_update_pos(Ball_control_data *ball_data, int delta_time_ms)
  8000fc0:	687b      	ldr	r3, [r7, #4]
  8000fc2:	edc3 7a06 	vstr	s15, [r3, #24]
 
-	ball_data->X_screen_pos += (ball_data->X_screen_speed * delta_time);
+	ball_data->X_screen_pos += (ball_data->X_screen_speed * delta_time);		// Całkowanie prędkosći chwilowej by otrzymać
  8000fc6:	687b      	ldr	r3, [r7, #4]
  8000fc8:	ed93 7a03 	vldr	s14, [r3, #12]
  8000fcc:	687b      	ldr	r3, [r7, #4]
@@ -1321,7 +1328,7 @@ void ball_update_pos(Ball_control_data *ball_data, int delta_time_ms)
  8000fda:	ee77 7a27 	vadd.f32	s15, s14, s15
  8000fde:	687b      	ldr	r3, [r7, #4]
  8000fe0:	edc3 7a03 	vstr	s15, [r3, #12]
-	ball_data->Y_screen_pos += (ball_data->Y_screen_speed * delta_time);
+	ball_data->Y_screen_pos += (ball_data->Y_screen_speed * delta_time);		// aktualną pozycję piłki na ekranie
  8000fe4:	687b      	ldr	r3, [r7, #4]
  8000fe6:	ed93 7a04 	vldr	s14, [r3, #16]
  8000fea:	687b      	ldr	r3, [r7, #4]
@@ -1346,7 +1353,9 @@ void ball_update_pos(Ball_control_data *ball_data, int delta_time_ms)
  8001024:	42480000 	.word	0x42480000
 
 08001028 <ball_handle_collision>:
-
+ * int minX - min. dopuszczalna wartość dla współrzędnej X
+ * int minY - min. dopuszczalna wartość dla współrzędnej Y
+ */
 void ball_handle_collision(Ball_control_data *ball_data,
 						   int maxX, int minX, int maxY, int minY)
 {
@@ -1357,6 +1366,7 @@ void ball_handle_collision(Ball_control_data *ball_data,
  8001030:	60b9      	str	r1, [r7, #8]
  8001032:	607a      	str	r2, [r7, #4]
  8001034:	603b      	str	r3, [r7, #0]
+	// Spradzenie kontaktu ze ścianami horyzontalnie wzdłuż osi X
 	if(ball_data->X_screen_pos > maxX || ball_data->X_screen_pos < minX)
  8001036:	68fb      	ldr	r3, [r7, #12]
  8001038:	ed93 7a03 	vldr	s14, [r3, #12]
@@ -1375,6 +1385,7 @@ void ball_handle_collision(Ball_control_data *ball_data,
  8001064:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
  8001068:	d549      	bpl.n	80010fe <ball_handle_collision+0xd6>
 	{
+		// Zmiana kierunku prędkości piłki po odbiciu
 		ball_data->X_screen_speed = -ball_data->X_screen_speed * WALL_ENERGY_LOSS_CONST;
  800106a:	68fb      	ldr	r3, [r7, #12]
  800106c:	edd3 7a05 	vldr	s15, [r3, #20]
@@ -1393,6 +1404,7 @@ void ball_handle_collision(Ball_control_data *ball_data,
  8001094:	4602      	mov	r2, r0
  8001096:	68fb      	ldr	r3, [r7, #12]
  8001098:	615a      	str	r2, [r3, #20]
+		// Cofnięcie piłki do obrębu ekranu
 		ball_data->X_screen_pos = ball_data->X_screen_pos > maxX ? maxX : ball_data->X_screen_pos;
  800109a:	68fb      	ldr	r3, [r7, #12]
  800109c:	ed93 7a03 	vldr	s14, [r3, #12]
@@ -1428,6 +1440,8 @@ void ball_handle_collision(Ball_control_data *ball_data,
  80010f8:	68fb      	ldr	r3, [r7, #12]
  80010fa:	edc3 7a03 	vstr	s15, [r3, #12]
 	}
+
+	// Spradzenie kontaktu ze ścianami horyzontalnie wzdłuż osi Y
 	if(ball_data->Y_screen_pos > maxY || ball_data->Y_screen_pos < minY)
  80010fe:	68fb      	ldr	r3, [r7, #12]
  8001100:	ed93 7a04 	vldr	s14, [r3, #16]
@@ -1445,8 +1459,8 @@ void ball_handle_collision(Ball_control_data *ball_data,
  8001128:	eeb4 7ae7 	vcmpe.f32	s14, s15
  800112c:	eef1 fa10 	vmrs	APSR_nzcv, fpscr
  8001130:	d400      	bmi.n	8001134 <ball_handle_collision+0x10c>
-	{
 		ball_data->Y_screen_speed = -ball_data->Y_screen_speed * WALL_ENERGY_LOSS_CONST;
+		// Cofnięcie piłki do obrębu ekranu
 		ball_data->Y_screen_pos = ball_data->Y_screen_pos > maxY ? maxY : ball_data->Y_screen_pos;
 		ball_data->Y_screen_pos = ball_data->Y_screen_pos < minY ? minY : ball_data->Y_screen_pos;
 	}
@@ -2275,14 +2289,14 @@ int main(void)
  800170a:	f000 f929 	bl	8001960 <MX_I2C3_Init>
   /* USER CODE BEGIN 2 */
 
-  L3GD20 m_gyro;
-  Ball_control_data m_ball;
-  L3GD20_init(&hspi5, &m_gyro);
+  L3GD20 m_gyro;						// struktura z daynmi z żyroskopu
+  Ball_control_data m_ball;				// struktura z informacjami o instancji piłki
+  L3GD20_init(&hspi5, &m_gyro);			// Inicjalizacja żyroskopu
  800170e:	f107 031c 	add.w	r3, r7, #28
  8001712:	4619      	mov	r1, r3
  8001714:	4829      	ldr	r0, [pc, #164]	; (80017bc <main+0xe4>)
  8001716:	f7ff fd5f 	bl	80011d8 <L3GD20_init>
-  ball_ctrl_init(&m_ball, 100, 100);
+  ball_ctrl_init(&m_ball, 100, 100);	// Inicjalizacja pozycji piłki
  800171a:	463b      	mov	r3, r7
  800171c:	2264      	movs	r2, #100	; 0x64
  800171e:	2164      	movs	r1, #100	; 0x64
@@ -2293,26 +2307,26 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  L3GD20_readRawData(&m_gyro);
+	  L3GD20_readRawData(&m_gyro);						// Odczyt danych z żyroskopu
  8001726:	f107 031c 	add.w	r3, r7, #28
  800172a:	4618      	mov	r0, r3
  800172c:	f7ff fdd8 	bl	80012e0 <L3GD20_readRawData>
-	  L3GD20_convertRawData(&m_gyro);
+	  L3GD20_convertRawData(&m_gyro);					// Przetworzenie danych z żyroskopu
  8001730:	f107 031c 	add.w	r3, r7, #28
  8001734:	4618      	mov	r0, r3
  8001736:	f7ff fe1f 	bl	8001378 <L3GD20_convertRawData>
-	  ball_update_ctrl_angles(&m_ball, &m_gyro, 10);
+	  ball_update_ctrl_angles(&m_ball, &m_gyro, 10);	// aktualizacja sił dziłających na piłkę od żyroskopu
  800173a:	f107 011c 	add.w	r1, r7, #28
  800173e:	463b      	mov	r3, r7
  8001740:	220a      	movs	r2, #10
  8001742:	4618      	mov	r0, r3
  8001744:	f7ff fb30 	bl	8000da8 <ball_update_ctrl_angles>
-	  ball_update_pos(&m_ball, 10);
+	  ball_update_pos(&m_ball, 10);						// aktualizacja pozycji piłki na ekranie
  8001748:	463b      	mov	r3, r7
  800174a:	210a      	movs	r1, #10
  800174c:	4618      	mov	r0, r3
  800174e:	f7ff fb77 	bl	8000e40 <ball_update_pos>
-	  ball_handle_collision(&m_ball, 260, 0, 180, 0);
+	  ball_handle_collision(&m_ball, 260, 0, 180, 0);	// sprawdzenie warunku kolizji i aktualizacja prędkości
  8001752:	4638      	mov	r0, r7
  8001754:	2300      	movs	r3, #0
  8001756:	9300      	str	r3, [sp, #0]
@@ -2329,12 +2343,14 @@ int main(void)
  800176e:	2b01      	cmp	r3, #1
  8001770:	d103      	bne.n	800177a <main+0xa2>
 	  {
+		  // Zerowanie dryftu powstałego przy całkowaniu wartości z żyroskopu
 	  	  ball_ctrl_restetDrift(&m_ball);
  8001772:	463b      	mov	r3, r7
  8001774:	4618      	mov	r0, r3
  8001776:	f7ff fb00 	bl	8000d7a <ball_ctrl_restetDrift>
 	  }
 
+	  // Zadanie piłce pozycji
 	  HAL_LTDC_SetWindowPosition_NoReload(&hltdc, m_ball.Y_screen_pos, m_ball.X_screen_pos, 1);
  800177a:	edd7 7a04 	vldr	s15, [r7, #16]
  800177e:	eebc 7ae7 	vcvt.u32.f32	s14, s15
@@ -2345,16 +2361,18 @@ int main(void)
  8001790:	ee17 1a10 	vmov	r1, s14
  8001794:	480b      	ldr	r0, [pc, #44]	; (80017c4 <main+0xec>)
  8001796:	f002 fbc8 	bl	8003f2a <HAL_LTDC_SetWindowPosition_NoReload>
-	  /* Ask for LTDC reload within next vertical blanking*/
+
 	  ReloadFlag = 0;
  800179a:	4b0b      	ldr	r3, [pc, #44]	; (80017c8 <main+0xf0>)
  800179c:	2200      	movs	r2, #0
  800179e:	601a      	str	r2, [r3, #0]
+	  // Aktualizacja stanu ekranu
 	  HAL_LTDC_Reload(&hltdc,LTDC_SRCR_VBR);
  80017a0:	2102      	movs	r1, #2
  80017a2:	4808      	ldr	r0, [pc, #32]	; (80017c4 <main+0xec>)
  80017a4:	f002 fb92 	bl	8003ecc <HAL_LTDC_Reload>
 
+	  // Czekanie aż ekran zostanie zaaktualzizowany
 	  while(ReloadFlag == 0) { }
  80017a8:	bf00      	nop
  80017aa:	4b07      	ldr	r3, [pc, #28]	; (80017c8 <main+0xf0>)
@@ -2365,7 +2383,7 @@ int main(void)
 	  HAL_Delay(10);
  80017b2:	200a      	movs	r0, #10
  80017b4:	f001 fa1e 	bl	8002bf4 <HAL_Delay>
-	  L3GD20_readRawData(&m_gyro);
+	  L3GD20_readRawData(&m_gyro);						// Odczyt danych z żyroskopu
  80017b8:	e7b5      	b.n	8001726 <main+0x4e>
  80017ba:	bf00      	nop
  80017bc:	200000e4 	.word	0x200000e4
@@ -3719,9 +3737,8 @@ static void MX_GPIO_Init(void)
  8001fb8:	40020400 	.word	0x40020400
 
 08001fbc <HAL_LTDC_ReloadEventCallback>:
-  *x2 = 0;
-  *y2 = 160 - index*4;
-}
+
+/* USER CODE BEGIN 4 */
 
 void HAL_LTDC_ReloadEventCallback(LTDC_HandleTypeDef *hltdc)
 {

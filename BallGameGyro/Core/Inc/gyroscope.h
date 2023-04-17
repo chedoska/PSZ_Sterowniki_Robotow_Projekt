@@ -1,8 +1,8 @@
 /*
  * gyroscope.h
  *
- *  Created on: 15 kwi 2023
- *      Author: chedo
+ *  Created on: 12 kwi 2023
+ *      Author: chedoska
  */
 
 #include "main.h"
@@ -10,26 +10,26 @@
 #ifndef GYROSCOPE_H_
 #define GYROSCOPE_H_
 
-#define L3GD20_CTRL_REG1 0x20
-#define L3GD20_CTRL_REG2 0x21
-#define L3GD20_CTRL_REG3 0x22
-#define L3GD20_CTRL_REG4 0x23
-#define L3GD20_CTRL_REG5 0x24
+#define L3GD20_CTRL_REG1 0x20		// Rejestr kontroli ukłądu 1
+#define L3GD20_CTRL_REG2 0x21		// Rejestr kontroli ukłądu 2
+#define L3GD20_CTRL_REG3 0x22		// Rejestr kontroli ukłądu 3
+#define L3GD20_CTRL_REG4 0x23		// Rejestr kontroli ukłądu 4
+#define L3GD20_CTRL_REG5 0x24		// Rejestr kontroli ukłądu 5
 
-#define L3GD20_OUT_X_L 0x28
-#define L3GD20_OUT_X_H 0x29
-#define L3GD20_OUT_Y_L 0x2A
-#define L3GD20_OUT_Y_H 0x2B
-#define L3GD20_OUT_Z_L 0x2C
-#define L3GD20_OUT_Z_H 0x2D
+#define L3GD20_OUT_X_L 0x28			// Młodzy bajt wartości prędkości obrotowej wookół osi X
+#define L3GD20_OUT_X_H 0x29			// Starszy bajt wartości prędkości obrotowej wookół osi X
+#define L3GD20_OUT_Y_L 0x2A			// Młodzy bajt wartości prędkości obrotowej wookół osi Y
+#define L3GD20_OUT_Y_H 0x2B			// Starszy bajt wartości prędkości obrotowej wookół osi Y
+#define L3GD20_OUT_Z_L 0x2C			// Młodzy bajt wartości prędkości obrotowej wookół osi Z
+#define L3GD20_OUT_Z_H 0x2D			// Starszy bajt wartości prędkości obrotowej wookół osi Z
 
-#define L3GD20_WHO_AM_I 0x0F
+#define L3GD20_WHO_AM_I 0x0F		// Rejestr określający identyfikator urządzenia
 
-#define L3GD20_SPI_WAIT_TIME 500
+#define L3GD20_SPI_WAIT_TIME 500	// Czas oczekiwania przez SPI na wartości z żyroskopu
 
-#define L3GD20_X_OFFSET -30
-#define L3GD20_Y_OFFSET -5
-#define L3GD20_Z_OFFSET 13
+#define L3GD20_X_OFFSET -30			// Określone doświadczalnie przesunięcie dla odczytów prędkości obrotwej X
+#define L3GD20_Y_OFFSET -5			// Określone doświadczalnie przesunięcie dla odczytów prędkości obrotwej Y
+#define L3GD20_Z_OFFSET 13			// Określone doświadczalnie przesunięcie dla odczytów prędkości obrotwej Z
 #define SENSITIVITY 0.09
 
 struct L3GD20

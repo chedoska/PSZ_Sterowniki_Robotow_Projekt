@@ -2,7 +2,7 @@
  * ball_control.h
  *
  *  Created on: Apr 15, 2023
- *      Author: chedo
+ *      Author: chedoska
  */
 
 #ifndef INC_BALL_CONTROL_H_

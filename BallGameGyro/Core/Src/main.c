@@ -35,25 +35,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-uint32_t Xpos1 = 0;
-uint32_t Xpos2 = 0;
-uint32_t Ypos1 = 0;
-uint32_t Ypos2 = 0;
-
-uint32_t x = 0;
-uint32_t y = 0;
-int change_x = 3;
-int change_y = 3;
 
 /* Private function prototypes -----------------------------------------------*/
-//static void LCD_Config(void);
-//static void SystemClock_Config(void);
-//static void Error_Handler(void);
-static void PicturesPosition(uint32_t* x1,
-                         uint32_t* y1,
-                         uint32_t* x2,
-                         uint32_t* y2,
-                         uint32_t index);
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -140,10 +123,10 @@ int main(void)
   MX_I2C3_Init();
   /* USER CODE BEGIN 2 */
 
-  L3GD20 m_gyro;
-  Ball_control_data m_ball;
-  L3GD20_init(&hspi5, &m_gyro);
-  ball_ctrl_init(&m_ball, 100, 100);
+  L3GD20 m_gyro;						// struktura z daynmi z żyroskopu
+  Ball_control_data m_ball;				// struktura z informacjami o instancji piłki
+  L3GD20_init(&hspi5, &m_gyro);			// Inicjalizacja żyroskopu
+  ball_ctrl_init(&m_ball, 100, 100);	// Inicjalizacja pozycji piłki
 
   /* USER CODE END 2 */
 
@@ -151,22 +134,26 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  L3GD20_readRawData(&m_gyro);
-	  L3GD20_convertRawData(&m_gyro);
-	  ball_update_ctrl_angles(&m_ball, &m_gyro, 10);
-	  ball_update_pos(&m_ball, 10);
-	  ball_handle_collision(&m_ball, 260, 0, 180, 0);
+	  L3GD20_readRawData(&m_gyro);						// Odczyt danych z żyroskopu
+	  L3GD20_convertRawData(&m_gyro);					// Przetworzenie danych z żyroskopu
+	  ball_update_ctrl_angles(&m_ball, &m_gyro, 10);	// aktualizacja sił dziłających na piłkę od żyroskopu
+	  ball_update_pos(&m_ball, 10);						// aktualizacja pozycji piłki na ekranie
+	  ball_handle_collision(&m_ball, 260, 0, 180, 0);	// sprawdzenie warunku kolizji i aktualizacja prędkości
 
 	  if(HAL_GPIO_ReadPin(B1_GPIO_Port, B1_Pin) == GPIO_PIN_SET)
 	  {
+		  // Zerowanie dryftu powstałego przy całkowaniu wartości z żyroskopu
 	  	  ball_ctrl_restetDrift(&m_ball);
 	  }
 
+	  // Zadanie piłce pozycji
 	  HAL_LTDC_SetWindowPosition_NoReload(&hltdc, m_ball.Y_screen_pos, m_ball.X_screen_pos, 1);
-	  /* Ask for LTDC reload within next vertical blanking*/
+
 	  ReloadFlag = 0;
+	  // Aktualizacja stanu ekranu
 	  HAL_LTDC_Reload(&hltdc,LTDC_SRCR_VBR);
 
+	  // Czekanie aż ekran zostanie zaaktualzizowany
 	  while(ReloadFlag == 0) { }
 
 	  HAL_Delay(10);
@@ -685,16 +672,6 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-static void PicturesPosition(uint32_t* x1, uint32_t* y1, uint32_t* x2, uint32_t* y2, uint32_t index)
-{
-  /* picture1 position */
-  *x1 = 0;
-  *y1 = index*4;
-
-  /* picture2 position */
-  *x2 = 0;
-  *y2 = 160 - index*4;
-}
 
 void HAL_LTDC_ReloadEventCallback(LTDC_HandleTypeDef *hltdc)
 {
