@@ -1,14 +1,10 @@
-11:34:26 **** Incremental Build of configuration Debug for project BallGameGyro ****
+11:59:09 **** Incremental Build of configuration Debug for project BallGameGyro ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/ball_controll.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/ball_controll.d" -MT"Core/Src/ball_controll.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ball_controll.o"
 arm-none-eabi-gcc "../Core/Src/gyroscope.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/gyroscope.d" -MT"Core/Src/gyroscope.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/gyroscope.o"
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
-../Core/Src/main.c: In function 'main':
-../Core/Src/main.c:95:11: warning: unused variable 'index' [-Wunused-variable]
-  uint32_t index = 0;
-           ^~~~~
 ../Core/Src/main.c: In function 'MX_LTDC_Init':
-../Core/Src/main.c:344:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+../Core/Src/main.c:343:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
    ili9341_Init();
    ^~~~~~~~~~~~
    MX_TIM1_Init
@@ -19,7 +15,7 @@ arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
 arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
 arm-none-eabi-size   BallGameGyro.elf 
    text	   data	    bss	    dec	    hex	filename
-  37244	     24	   2328	  39596	   9aac	BallGameGyro.elf
+  37240	     24	   2328	  39592	   9aa8	BallGameGyro.elf
 Finished building: default.size.stdout
  
 Finished building: BallGameGyro.bin
@@ -27,5 +23,5 @@ Finished building: BallGameGyro.bin
 Finished building: BallGameGyro.list
  
 
-11:34:28 Build Finished. 0 errors, 2 warnings. (took 1s.528ms)
+11:59:10 Build Finished. 0 errors, 1 warnings. (took 1s.354ms)
 
