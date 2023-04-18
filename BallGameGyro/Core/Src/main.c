@@ -37,6 +37,7 @@
 /* USER CODE BEGIN PD */
 
 /* Private function prototypes -----------------------------------------------*/
+void ball_bounce(uint32_t *x, uint32_t *y, unsigned int velocity);
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -677,6 +678,23 @@ void HAL_LTDC_ReloadEventCallback(LTDC_HandleTypeDef *hltdc)
   ReloadFlag = 1;
 }
 
+void ball_bounce(uint32_t *x, uint32_t *y, unsigned int velocity)
+{
+  int change_x = velocity;
+  int change_y = velocity;
+
+  if(*x == 0)
+    change_x = velocity;
+  if(*x >= 180)
+    change_x = -velocity;
+  if(*y == 0)
+    change_y = velocity;
+  if(*y >= 260)
+    change_y = -velocity;
+
+  *x += change_x;
+  *y += change_y;
+}
 /* USER CODE END 4 */
 
 /**
