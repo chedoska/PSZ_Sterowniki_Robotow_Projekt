@@ -1,8 +1,8 @@
-12:06:42 **** Incremental Build of configuration Debug for project BallGameGyro ****
+11:34:31 **** Incremental Build of configuration Debug for project BallGameGyro ****
 make -j12 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 ../Core/Src/main.c: In function 'MX_LTDC_Init':
-../Core/Src/main.c:343:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+../Core/Src/main.c:389:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
    ili9341_Init();
    ^~~~~~~~~~~~
    MX_TIM1_Init
@@ -13,7 +13,7 @@ arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
 arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
 arm-none-eabi-size   BallGameGyro.elf 
    text	   data	    bss	    dec	    hex	filename
-  37240	     24	   2328	  39592	   9aa8	BallGameGyro.elf
+  38200	     24	   2344	  40568	   9e78	BallGameGyro.elf
 Finished building: default.size.stdout
  
 Finished building: BallGameGyro.bin
@@ -21,5 +21,5 @@ Finished building: BallGameGyro.bin
 Finished building: BallGameGyro.list
  
 
-12:06:43 Build Finished. 0 errors, 1 warnings. (took 1s.224ms)
+11:34:32 Build Finished. 0 errors, 1 warnings. (took 1s.219ms)
 
