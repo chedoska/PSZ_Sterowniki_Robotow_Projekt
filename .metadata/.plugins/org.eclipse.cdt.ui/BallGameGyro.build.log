@@ -1,6 +1,16 @@
-17:00:32 **** Incremental Build of configuration Debug for project BallGameGyro ****
+19:47:50 **** Incremental Build of configuration Debug for project BallGameGyro ****
 make -j12 all 
-arm-none-eabi-gcc "../Core/Src/ball_controll.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/ball_controll.d" -MT"Core/Src/ball_controll.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ball_controll.o"
+arm-none-eabi-gcc "../Core/Src/ball_sound.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/ball_sound.d" -MT"Core/Src/ball_sound.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ball_sound.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:146:7: warning: unused variable 'it' [-Wunused-variable]
+   int it = 0;
+       ^~
+../Core/Src/main.c: In function 'MX_LTDC_Init':
+../Core/Src/main.c:410:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+   ili9341_Init();
+   ^~~~~~~~~~~~
+   MX_TIM1_Init
 arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: BallGameGyro.elf
  
@@ -8,13 +18,13 @@ arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
 arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
 arm-none-eabi-size   BallGameGyro.elf 
    text	   data	    bss	    dec	    hex	filename
-  41064	   1440	   2512	  45016	   afd8	BallGameGyro.elf
+  41320	     24	  18512	  59856	   e9d0	BallGameGyro.elf
 Finished building: default.size.stdout
- 
 Finished building: BallGameGyro.bin
+ 
  
 Finished building: BallGameGyro.list
  
 
-17:00:33 Build Finished. 0 errors, 0 warnings. (took 1s.228ms)
+19:47:51 Build Finished. 0 errors, 2 warnings. (took 1s.297ms)
 

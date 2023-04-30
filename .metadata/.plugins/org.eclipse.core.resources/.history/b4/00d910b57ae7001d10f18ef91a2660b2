@@ -1,0 +1,10 @@
+#include "ball_sound.h"
+
+void generateSineWave(int frequency, int amplitude, int timer_frequency)
+{
+	for(int t = 0; t < SAMPLE_NUMBER; t++)
+	{
+		sound_wav[t] = amplitude * sin(2 * PI_CONST)
+	}
+}
+

@@ -1,0 +1,7 @@
+#include "ball_sound.h"
+
+void generateSineWave(int frequency, int amplitude, int timer_frequency)
+{
+
+}
+
