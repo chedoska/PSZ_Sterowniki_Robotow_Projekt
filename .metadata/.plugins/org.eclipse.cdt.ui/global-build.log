@@ -781,3 +781,609 @@ Finished building: BallGameGyro.bin
  
 Finished building: BallGameGyro.list
  
+19:56:12 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/ball_sound.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/ball_sound.d" -MT"Core/Src/ball_sound.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ball_sound.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:146:7: warning: unused variable 'it' [-Wunused-variable]
+   int it = 0;
+       ^~
+../Core/Src/main.c: In function 'MX_LTDC_Init':
+../Core/Src/main.c:410:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+   ili9341_Init();
+   ^~~~~~~~~~~~
+   MX_TIM1_Init
+arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BallGameGyro.elf
+ 
+arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
+arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41328	     24	  18512	  59864	   e9d8	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+Finished building: BallGameGyro.bin
+ 
+Finished building: BallGameGyro.list
+ 
+20:12:53 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/ball_sound.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/ball_sound.d" -MT"Core/Src/ball_sound.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ball_sound.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:146:7: warning: unused variable 'it' [-Wunused-variable]
+   int it = 0;
+       ^~
+../Core/Src/main.c: In function 'MX_LTDC_Init':
+../Core/Src/main.c:410:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+   ili9341_Init();
+   ^~~~~~~~~~~~
+   MX_TIM1_Init
+arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BallGameGyro.elf
+ 
+arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
+arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41336	     24	  18512	  59872	   e9e0	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+Finished building: BallGameGyro.bin
+ 
+Finished building: BallGameGyro.list
+ 
+20:13:23 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:147:7: warning: unused variable 'it' [-Wunused-variable]
+   int it = 0;
+       ^~
+../Core/Src/main.c: In function 'MX_LTDC_Init':
+../Core/Src/main.c:411:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+   ili9341_Init();
+   ^~~~~~~~~~~~
+   MX_TIM1_Init
+arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BallGameGyro.elf
+ 
+arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
+arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41368	     24	  18512	  59904	   ea00	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+Finished building: BallGameGyro.bin
+ 
+Finished building: BallGameGyro.list
+ 
+20:14:31 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:150:7: warning: unused variable 'it' [-Wunused-variable]
+   int it = 0;
+       ^~
+../Core/Src/main.c: In function 'MX_LTDC_Init':
+../Core/Src/main.c:414:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+   ili9341_Init();
+   ^~~~~~~~~~~~
+   MX_TIM1_Init
+arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BallGameGyro.elf
+ 
+arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
+arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41448	     24	  18512	  59984	   ea50	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+Finished building: BallGameGyro.bin
+ 
+Finished building: BallGameGyro.list
+ 
+20:15:41 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:148:3: error: expected ';' before 'HAL_DAC_Start_DMA'
+   HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_2, (uint32_t*)sound_wav, SAMPLE_NUMBER, DAC_ALIGN_12B_R);
+   ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:151:7: warning: unused variable 'it' [-Wunused-variable]
+   int it = 0;
+       ^~
+../Core/Src/main.c: In function 'MX_LTDC_Init':
+../Core/Src/main.c:415:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+   ili9341_Init();
+   ^~~~~~~~~~~~
+   MX_TIM1_Init
+make: *** [Core/Src/subdir.mk:59: Core/Src/main.o] Error 1
+"make -j12 all" terminated with exit code 2. Build might be incomplete.
+20:15:47 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:151:7: warning: unused variable 'it' [-Wunused-variable]
+   int it = 0;
+       ^~
+../Core/Src/main.c: In function 'MX_LTDC_Init':
+../Core/Src/main.c:415:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+   ili9341_Init();
+   ^~~~~~~~~~~~
+   MX_TIM1_Init
+arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BallGameGyro.elf
+ 
+arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
+arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41472	     24	  18512	  60008	   ea68	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+Finished building: BallGameGyro.bin
+ 
+Finished building: BallGameGyro.list
+ 
+20:17:33 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_crc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_crc.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_crc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_crc.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dac_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma2d.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma2d.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma2d.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma2d.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dsi.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dsi.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dsi.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dsi.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_exti.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_ltdc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_ltdc.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_ltdc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_ltdc.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_ltdc_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_ltdc_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_ltdc_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_ltdc_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sdram.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sdram.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sdram.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sdram.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o"
+arm-none-eabi-gcc "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_fmc.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_fmc.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_fmc.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_fmc.o"
+arm-none-eabi-gcc "../Core/Src/ball_controll.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/ball_controll.d" -MT"Core/Src/ball_controll.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ball_controll.o"
+arm-none-eabi-gcc "../Core/Src/ball_sound.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/ball_sound.d" -MT"Core/Src/ball_sound.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ball_sound.o"
+arm-none-eabi-gcc "../Core/Src/gyroscope.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/gyroscope.d" -MT"Core/Src/gyroscope.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/gyroscope.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/stm32f429i_discovery.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f429i_discovery.d" -MT"Core/Src/stm32f429i_discovery.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f429i_discovery.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_hal_msp.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f4xx_hal_msp.d" -MT"Core/Src/stm32f4xx_hal_msp.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_hal_timebase_tim.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f4xx_hal_timebase_tim.d" -MT"Core/Src/stm32f4xx_hal_timebase_tim.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_hal_timebase_tim.o"
+arm-none-eabi-gcc "../Core/Src/stm32f4xx_it.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f4xx_it.d" -MT"Core/Src/stm32f4xx_it.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/stm32f4xx_it.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:151:7: warning: unused variable 'it' [-Wunused-variable]
+   int it = 0;
+       ^~
+../Core/Src/main.c: In function 'MX_LTDC_Init':
+../Core/Src/main.c:415:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+   ili9341_Init();
+   ^~~~~~~~~~~~
+   MX_TIM1_Init
+arm-none-eabi-gcc "../Core/Src/system_stm32f4xx.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/system_stm32f4xx.d" -MT"Core/Src/system_stm32f4xx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/system_stm32f4xx.o"
+arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BallGameGyro.elf
+ 
+arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
+arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41472	     24	  18512	  60008	   ea68	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+Finished building: BallGameGyro.bin
+ 
+Finished building: BallGameGyro.list
+ 
+20:18:51 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:151:7: warning: unused variable 'it' [-Wunused-variable]
+   int it = 0;
+       ^~
+../Core/Src/main.c: In function 'MX_LTDC_Init':
+../Core/Src/main.c:415:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+   ili9341_Init();
+   ^~~~~~~~~~~~
+   MX_TIM1_Init
+arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BallGameGyro.elf
+ 
+arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
+arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41448	     24	  18512	  59984	   ea50	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+Finished building: BallGameGyro.bin
+ 
+Finished building: BallGameGyro.list
+ 
+20:18:59 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:151:7: warning: unused variable 'it' [-Wunused-variable]
+   int it = 0;
+       ^~
+../Core/Src/main.c: In function 'MX_LTDC_Init':
+../Core/Src/main.c:415:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+   ili9341_Init();
+   ^~~~~~~~~~~~
+   MX_TIM1_Init
+arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BallGameGyro.elf
+ 
+arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
+arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41448	     24	  18512	  59984	   ea50	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+Finished building: BallGameGyro.bin
+ 
+Finished building: BallGameGyro.list
+ 
+20:19:14 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:151:7: warning: unused variable 'it' [-Wunused-variable]
+   int it = 0;
+       ^~
+../Core/Src/main.c: In function 'MX_LTDC_Init':
+../Core/Src/main.c:415:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+   ili9341_Init();
+   ^~~~~~~~~~~~
+   MX_TIM1_Init
+arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BallGameGyro.elf
+ 
+arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
+arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41448	     24	  18512	  59984	   ea50	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+Finished building: BallGameGyro.bin
+ 
+Finished building: BallGameGyro.list
+ 
+20:19:35 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:151:7: warning: unused variable 'it' [-Wunused-variable]
+   int it = 0;
+       ^~
+../Core/Src/main.c: In function 'MX_LTDC_Init':
+../Core/Src/main.c:415:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+   ili9341_Init();
+   ^~~~~~~~~~~~
+   MX_TIM1_Init
+arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BallGameGyro.elf
+ 
+arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
+arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41468	     24	  18512	  60004	   ea64	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+Finished building: BallGameGyro.bin
+ 
+Finished building: BallGameGyro.list
+ 
+20:19:51 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:151:7: warning: unused variable 'it' [-Wunused-variable]
+   int it = 0;
+       ^~
+../Core/Src/main.c: In function 'MX_LTDC_Init':
+../Core/Src/main.c:415:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+   ili9341_Init();
+   ^~~~~~~~~~~~
+   MX_TIM1_Init
+arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BallGameGyro.elf
+ 
+arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
+arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41468	     24	  18512	  60004	   ea64	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+Finished building: BallGameGyro.bin
+ 
+Finished building: BallGameGyro.list
+ 
+20:20:40 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:152:7: warning: unused variable 'it' [-Wunused-variable]
+   int it = 0;
+       ^~
+../Core/Src/main.c: In function 'MX_LTDC_Init':
+../Core/Src/main.c:416:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+   ili9341_Init();
+   ^~~~~~~~~~~~
+   MX_TIM1_Init
+arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BallGameGyro.elf
+ 
+arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
+arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41740	     24	  18512	  60276	   eb74	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+Finished building: BallGameGyro.bin
+ 
+Finished building: BallGameGyro.list
+ 
+20:21:39 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/ball_sound.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/ball_sound.d" -MT"Core/Src/ball_sound.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/ball_sound.o"
+arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BallGameGyro.elf
+ 
+arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
+arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41756	     24	  18512	  60292	   eb84	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+Finished building: BallGameGyro.bin
+ 
+Finished building: BallGameGyro.list
+ 
+20:21:58 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:152:7: warning: unused variable 'it' [-Wunused-variable]
+   int it = 0;
+       ^~
+../Core/Src/main.c: In function 'MX_LTDC_Init':
+../Core/Src/main.c:416:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+   ili9341_Init();
+   ^~~~~~~~~~~~
+   MX_TIM1_Init
+arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BallGameGyro.elf
+ 
+arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
+arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41756	     24	  18512	  60292	   eb84	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+Finished building: BallGameGyro.bin
+ 
+Finished building: BallGameGyro.list
+ 
+20:22:09 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41756	     24	  18512	  60292	   eb84	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+20:22:19 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:152:7: warning: unused variable 'it' [-Wunused-variable]
+   int it = 0;
+       ^~
+../Core/Src/main.c: In function 'MX_LTDC_Init':
+../Core/Src/main.c:416:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+   ili9341_Init();
+   ^~~~~~~~~~~~
+   MX_TIM1_Init
+arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BallGameGyro.elf
+ 
+arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
+arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41756	     24	  18512	  60292	   eb84	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+Finished building: BallGameGyro.bin
+ 
+Finished building: BallGameGyro.list
+ 
+20:22:29 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41756	     24	  18512	  60292	   eb84	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+20:22:39 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:152:7: warning: unused variable 'it' [-Wunused-variable]
+   int it = 0;
+       ^~
+../Core/Src/main.c: In function 'MX_LTDC_Init':
+../Core/Src/main.c:416:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+   ili9341_Init();
+   ^~~~~~~~~~~~
+   MX_TIM1_Init
+arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BallGameGyro.elf
+ 
+arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
+arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41756	     24	  18512	  60292	   eb84	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+Finished building: BallGameGyro.bin
+ 
+Finished building: BallGameGyro.list
+ 
+20:22:55 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:152:7: warning: unused variable 'it' [-Wunused-variable]
+   int it = 0;
+       ^~
+../Core/Src/main.c: In function 'MX_LTDC_Init':
+../Core/Src/main.c:416:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+   ili9341_Init();
+   ^~~~~~~~~~~~
+   MX_TIM1_Init
+arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BallGameGyro.elf
+ 
+arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
+arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41732	     24	  18512	  60268	   eb6c	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+Finished building: BallGameGyro.bin
+ 
+Finished building: BallGameGyro.list
+ 
+20:24:13 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:152:7: warning: unused variable 'it' [-Wunused-variable]
+   int it = 0;
+       ^~
+../Core/Src/main.c: In function 'MX_LTDC_Init':
+../Core/Src/main.c:416:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+   ili9341_Init();
+   ^~~~~~~~~~~~
+   MX_TIM1_Init
+arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BallGameGyro.elf
+ 
+arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
+arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41756	     24	  18512	  60292	   eb84	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+Finished building: BallGameGyro.bin
+ 
+Finished building: BallGameGyro.list
+ 
+20:25:57 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:152:7: warning: unused variable 'it' [-Wunused-variable]
+   int it = 0;
+       ^~
+../Core/Src/main.c: In function 'MX_LTDC_Init':
+../Core/Src/main.c:416:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+   ili9341_Init();
+   ^~~~~~~~~~~~
+   MX_TIM1_Init
+arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BallGameGyro.elf
+ 
+arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
+arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41760	     24	  18512	  60296	   eb88	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+Finished building: BallGameGyro.bin
+ 
+Finished building: BallGameGyro.list
+ 
+20:26:24 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:152:7: warning: unused variable 'it' [-Wunused-variable]
+   int it = 0;
+       ^~
+../Core/Src/main.c: In function 'MX_LTDC_Init':
+../Core/Src/main.c:416:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+   ili9341_Init();
+   ^~~~~~~~~~~~
+   MX_TIM1_Init
+arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BallGameGyro.elf
+ 
+arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
+arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41760	     24	  18512	  60296	   eb88	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+Finished building: BallGameGyro.bin
+ 
+Finished building: BallGameGyro.list
+ 
+20:28:12 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:152:7: warning: unused variable 'it' [-Wunused-variable]
+   int it = 0;
+       ^~
+../Core/Src/main.c: In function 'MX_LTDC_Init':
+../Core/Src/main.c:416:3: warning: implicit declaration of function 'ili9341_Init'; did you mean 'MX_TIM1_Init'? [-Wimplicit-function-declaration]
+   ili9341_Init();
+   ^~~~~~~~~~~~
+   MX_TIM1_Init
+arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: BallGameGyro.elf
+ 
+arm-none-eabi-objdump -h -S  BallGameGyro.elf  > "BallGameGyro.list"
+arm-none-eabi-objcopy  -O binary  BallGameGyro.elf  "BallGameGyro.bin"
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41760	     24	  18512	  60296	   eb88	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+Finished building: BallGameGyro.bin
+ 
+Finished building: BallGameGyro.list
+ 
