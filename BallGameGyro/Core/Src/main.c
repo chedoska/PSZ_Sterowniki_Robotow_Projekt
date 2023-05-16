@@ -144,6 +144,7 @@ int main(void)
 	  {
 		  // Zerowanie dryftu powstałego przy całkowaniu wartości z żyroskopu
 	  	  ball_ctrl_restetDrift(&m_ball);
+	  	  // komentarz
 	  }
 
 	  // Zadanie piłce pozycji

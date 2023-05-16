@@ -1,8 +1,0 @@
-#ifndef INC_BALL_SOUND_H_
-#define INC_BALL_SOUND_H_
-
-#define SAMPLE_NUMBER 1000
-
-uint32_t sound_wav[SAMPLE_NUMBER];
-
-#endif /* INC_BALL_SOUND_H_ */
