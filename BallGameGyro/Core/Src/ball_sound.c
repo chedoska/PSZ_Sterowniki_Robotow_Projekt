@@ -28,3 +28,30 @@ void addSineWaveAt(uint32_t frequency, uint32_t amplitude, uint32_t timer_freque
 	}
 }
 
+void initMelody_1(){
+	generateSineWave(2000, 000, 10000);
+	addSineWaveAt(500, MAX_AMPLITUDE, TIMER_FREQUENCY, 0, 500);
+	addSineWaveAt(800, MAX_AMPLITUDE, TIMER_FREQUENCY, 500, 1000);
+	addSineWaveAt(650, MAX_AMPLITUDE, TIMER_FREQUENCY, 1000, 1500);
+	addSineWaveAt(900, MAX_AMPLITUDE, TIMER_FREQUENCY, 1500, 2000);
+	addSineWaveAt(1200, MAX_AMPLITUDE, TIMER_FREQUENCY, 2000, 2500);
+	addSineWaveAt(1600, MAX_AMPLITUDE, TIMER_FREQUENCY, 2500, 3000);
+	addSineWaveAt(650, MAX_AMPLITUDE, TIMER_FREQUENCY, 3000, 3500);
+	addSineWaveAt(800, MAX_AMPLITUDE, TIMER_FREQUENCY, 3500, 4000);
+	addSineWaveAt(1000, MAX_AMPLITUDE, TIMER_FREQUENCY, 4000, 4500);
+	addSineWaveAt(700, MAX_AMPLITUDE, TIMER_FREQUENCY, 4500, 5000);
+	addSineWaveAt(2300, MAX_AMPLITUDE, TIMER_FREQUENCY, 5000, 5500);
+	addSineWaveAt(2500, MAX_AMPLITUDE, TIMER_FREQUENCY, 5500, 6000);
+	addSineWaveAt(3000, MAX_AMPLITUDE, TIMER_FREQUENCY, 6000, 6300);
+}
+
+void initMelody_2(){
+	generateSineWave(2000, 000, 10000);
+
+	uint32_t freqArray[13] = {800, 1200, 1600, 1200, 800, 400, 900,
+							  1800, 2200, 2500, 2000, 2500, 2900};
+	for(int i = 0; i < 13; i++)
+	{
+		addSineWaveAt(freqArray[i], MAX_AMPLITUDE, TIMER_FREQUENCY, i * 500, (i + 1) * 500);
+	}
+}

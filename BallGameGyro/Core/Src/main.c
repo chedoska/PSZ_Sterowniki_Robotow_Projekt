@@ -139,17 +139,12 @@ int main(void)
   L3GD20_init(&hspi5, &m_gyro);			// Inicjalizacja żyroskopu
   ball_ctrl_init(&m_ball, 100, 100);	// Inicjalizacja pozycji piłki
 
-  generateSineWave(2000, 0, 10000);//
-  addSineWaveAt(600, 4000, 20000, 0, 800);
-  addSineWaveAt(1000, 4000, 20000, 1000, 1600);
-  addSineWaveAt(1400, 4000, 20000, 2000, 2400);
-  addSineWaveAt(1800, 4000, 20000, 3000, 3200);
-  addSineWaveAt(2200, 4000, 20000, 2000, 4000);
+  initMelody_2();
 
   HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_2, (uint32_t*)sound_wav, SAMPLE_NUMBER, DAC_ALIGN_12B_R);
   HAL_TIM_Base_Start(&htim2);
 
-  int it = 0;
+  //int it = 0;
 
   /* USER CODE END 2 */
 

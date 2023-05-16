@@ -1,2 +1,4 @@
 ball_sound.c:3:6:generateSineWave	48	static
 ball_sound.c:15:6:addSineWaveAt	56	static
+ball_sound.c:31:6:initMelody_1	16	static
+ball_sound.c:48:6:initMelody_2	80	static
