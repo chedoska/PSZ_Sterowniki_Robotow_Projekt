@@ -46,8 +46,8 @@ BallGameGyro.bin \
 all: BallGameGyro.elf secondary-outputs
 
 # Tool invocations
-BallGameGyro.elf: $(OBJS) $(USER_OBJS) C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld
-	arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Dokumenty\GitHub\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+BallGameGyro.elf: $(OBJS) $(USER_OBJS) C:\Users\chedo\OneDrive\Pulpit\SEMESTR_6\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld
+	arm-none-eabi-gcc -o "BallGameGyro.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\chedo\OneDrive\Pulpit\SEMESTR_6\PSZ_Sterowniki_Robotow_Projekt\BallGameGyro\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="BallGameGyro.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

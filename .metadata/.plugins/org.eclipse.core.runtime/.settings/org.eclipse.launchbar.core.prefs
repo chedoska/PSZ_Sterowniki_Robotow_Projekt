@@ -7,3 +7,4 @@ org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:BallGameGyro\ Debug/activeLaunc
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:BallGameGyro\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:ball_game\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:ball_game\ Debug/activeLaunchTarget=null\:---
+org.eclipse.launchbar.core.descriptorType.default\:New_configuration/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local

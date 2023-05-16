@@ -74,9 +74,26 @@ void ball_update_pos(Ball_control_data *ball_data, int delta_time_ms)
  * int minX - min. dopuszczalna wartość dla współrzędnej X
  * int minY - min. dopuszczalna wartość dla współrzędnej Y
  */
-void ball_handle_collision(Ball_control_data *ball_data,
+WallHit ball_handle_collision(Ball_control_data *ball_data,
 						   int maxX, int minX, int maxY, int minY)
 {
+	static CollisionFilterStatus collisionFilterFlag_Y = BALL_COLLISIONS_ALOWED;
+	static CollisionFilterStatus collisionFilterFlag_X = BALL_COLLISIONS_ALOWED;
+
+	if	(ball_data->X_screen_pos > minX + COLLISION_RESTART_AREA_OFFSET &&
+	 	 ball_data->X_screen_pos < maxX - COLLISION_RESTART_AREA_OFFSET)
+	{
+		collisionFilterFlag_X = BALL_COLLISIONS_ALOWED;
+	}
+
+	if	(ball_data->Y_screen_pos > minY + COLLISION_RESTART_AREA_OFFSET &&
+		 ball_data->Y_screen_pos < maxY - COLLISION_RESTART_AREA_OFFSET)
+	{
+		collisionFilterFlag_Y = BALL_COLLISIONS_ALOWED;
+	}
+
+	WallHit wallHitFlag = BALL_NO_COLLISION;
+
 	// Spradzenie kontaktu ze ścianami horyzontalnie wzdłuż osi X
 	if(ball_data->X_screen_pos > maxX || ball_data->X_screen_pos < minX)
 	{
@@ -85,6 +102,11 @@ void ball_handle_collision(Ball_control_data *ball_data,
 		// Cofnięcie piłki do obrębu ekranu
 		ball_data->X_screen_pos = ball_data->X_screen_pos > maxX ? maxX : ball_data->X_screen_pos;
 		ball_data->X_screen_pos = ball_data->X_screen_pos < minX ? minX : ball_data->X_screen_pos;
+
+		if(collisionFilterFlag_X == BALL_COLLISIONS_ALOWED){
+			wallHitFlag = BALL_COLLISION_DETECTED;
+			collisionFilterFlag_X = BALL_COLLISIONS_BLOCKED;
+		}
 	}
 
 	// Spradzenie kontaktu ze ścianami horyzontalnie wzdłuż osi Y
@@ -95,7 +117,13 @@ void ball_handle_collision(Ball_control_data *ball_data,
 		// Cofnięcie piłki do obrębu ekranu
 		ball_data->Y_screen_pos = ball_data->Y_screen_pos > maxY ? maxY : ball_data->Y_screen_pos;
 		ball_data->Y_screen_pos = ball_data->Y_screen_pos < minY ? minY : ball_data->Y_screen_pos;
+
+		if(collisionFilterFlag_Y == BALL_COLLISIONS_ALOWED){
+			wallHitFlag = BALL_COLLISION_DETECTED;
+			collisionFilterFlag_Y = BALL_COLLISIONS_BLOCKED;
+		}
 	}
+	return wallHitFlag;
 }
 
 

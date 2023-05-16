@@ -2,4 +2,4 @@ ball_controll.c:10:6:ball_ctrl_init	16	static
 ball_controll.c:20:6:ball_ctrl_restetDrift	16	static
 ball_controll.c:33:6:ball_update_ctrl_angles	40	static
 ball_controll.c:46:6:ball_update_pos	48	static
-ball_controll.c:77:6:ball_handle_collision	32	static
+ball_controll.c:77:9:ball_handle_collision	40	static
