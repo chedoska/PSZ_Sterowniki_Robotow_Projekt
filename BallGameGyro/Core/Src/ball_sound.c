@@ -48,8 +48,8 @@ void initMelody_1(){
 void initMelody_2(){
 	generateSineWave(2000, 000, 10000);
 
-	uint32_t freqArray[13] = {800, 1200, 1600, 1200, 800, 400, 900,
-							  1800, 2200, 2500, 2000, 2500, 2900};
+	uint32_t freqArray[13] = {800, 1200, 1600, 1200, 800, 400, 900, 1800, 2200, 2500, 2000, 2500, 2900};
+
 	for(int i = 0; i < 13; i++)
 	{
 		addSineWaveAt(freqArray[i], MAX_AMPLITUDE, TIMER_FREQUENCY, i * 500, (i + 1) * 500);

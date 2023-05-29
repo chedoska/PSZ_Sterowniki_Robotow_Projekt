@@ -1,0 +1,7 @@
+cube_3d.c:4:16:apply_rotation_to_point	56	static
+cube_3d.c:34:7:apply_rotation_to_point_only_z	40	static
+cube_3d.c:45:6:rotate_vertex	24	static
+cube_3d.c:66:6:rotate_cube	24	static
+cube_3d.c:72:6:set_rotation_cube	32	static
+cube_3d.c:92:6:init_cube	968	static
+cube_3d.c:179:6:translate_vertex	24	static

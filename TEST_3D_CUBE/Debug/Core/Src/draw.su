@@ -1,0 +1,6 @@
+draw.c:5:6:draw_demo_page	24	static
+draw.c:11:6:draw_square_at	32	static
+draw.c:24:6:draw_square_at_point	48	static
+draw.c:38:6:draw_vertex	64	static
+draw.c:48:6:draw_line	56	static
+draw.c:71:6:draw_cube	24	static
