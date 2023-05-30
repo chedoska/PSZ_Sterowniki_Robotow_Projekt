@@ -1,9 +1,10 @@
 #include "ball_sound.h"
 
+// Funkcja inicjalizująca tablice z próbkami wstawiając funkcję sinusa
 void generateSineWave(uint32_t frequency, uint32_t amplitude, uint32_t timer_frequency)
 {
-	amplitude /= 2;
-	if(amplitude > 2047) amplitude = 2047;
+	amplitude /= 2;		// Amplituda w argumencie ma zakres (0-4096) więc trzeba ją zmniejszyć do max. 2048
+	if(amplitude > 2047) amplitude = 2047;	// Zabezpieczenie przez zbyt wielkimi wartościami
 
 	float period = 1.0 / timer_frequency;
 	for(int t = 0; t < SAMPLE_NUMBER; t++)
@@ -12,10 +13,12 @@ void generateSineWave(uint32_t frequency, uint32_t amplitude, uint32_t timer_fre
 	}
 }
 
+// Funkcja wstawiająca do tablicy próbek w wybranym miejscy sinusoidę o wybranej częstotliwości
 void addSineWaveAt(uint32_t frequency, uint32_t amplitude, uint32_t timer_frequency, uint32_t begin, uint32_t end)
 {
 	amplitude /= 2;
 	float period = 1.0 / timer_frequency;
+	// Zabezpieczenie przed przekroczniem wielkości tablicy
 	if(end > SAMPLE_NUMBER)
 	{
 		end = SAMPLE_NUMBER;
@@ -23,11 +26,14 @@ void addSineWaveAt(uint32_t frequency, uint32_t amplitude, uint32_t timer_freque
 	for(int t = begin; t < end; t++)
 	{
 		int sample = amplitude * sinf(2.0 * PI_CONST_SOUND * t * period * frequency);
+		// Sygnały są ze sobą mieszane można więc na raz odtwarzać wiele częstotliwość
 		sound_wav[t] = sample + (int)sound_wav[t];
+		// Zabezpieczenie przed zbyt wielkimi wartościami
 		if(sound_wav[t] > 4095) sound_wav[t] = 4095;
 	}
 }
 
+// Funkjca generująca prostą melodię metodą manualną
 void initMelody_1(){
 	generateSineWave(2000, 000, 10000);
 	addSineWaveAt(500, MAX_AMPLITUDE, TIMER_FREQUENCY, 0, 500);
@@ -45,6 +51,7 @@ void initMelody_1(){
 	addSineWaveAt(3000, MAX_AMPLITUDE, TIMER_FREQUENCY, 6000, 6300);
 }
 
+// Funkcja genrując aprostą metlodię metodą proceduralną
 void initMelody_2(){
 	generateSineWave(2000, 000, 10000);
 

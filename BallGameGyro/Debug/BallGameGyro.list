@@ -27,23 +27,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  00020010  2**0
                   CONTENTS, READONLY
- 12 .debug_info   0001cc2a  00000000  00000000  00020040  2**0
+ 12 .debug_info   0001cc2b  00000000  00000000  00020040  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_abbrev 00003a06  00000000  00000000  0003cc6a  2**0
+ 13 .debug_abbrev 000039f0  00000000  00000000  0003cc6b  2**0
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_aranges 000019a8  00000000  00000000  00040670  2**3
+ 14 .debug_aranges 000019a8  00000000  00000000  00040660  2**3
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_ranges 000017f8  00000000  00000000  00042018  2**3
+ 15 .debug_ranges 000017f8  00000000  00000000  00042008  2**3
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_macro  00027f34  00000000  00000000  00043810  2**0
+ 16 .debug_macro  00027f34  00000000  00000000  00043800  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_line   000156bb  00000000  00000000  0006b744  2**0
+ 17 .debug_line   000156bd  00000000  00000000  0006b734  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    000e83d3  00000000  00000000  00080dff  2**0
+ 18 .debug_str    000e83d3  00000000  00000000  00080df1  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  001691d2  2**0
+ 19 .comment      0000007b  00000000  00000000  001691c4  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00006f80  00000000  00000000  00169250  2**2
+ 20 .debug_frame  00006f80  00000000  00000000  00169240  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -1622,6 +1622,7 @@ WallHit ball_handle_collision(Ball_control_data *ball_data,
 08001288 <generateSineWave>:
 #include "ball_sound.h"
 
+// Funkcja inicjalizująca tablice z próbkami wstawiając funkcję sinusa
 void generateSineWave(uint32_t frequency, uint32_t amplitude, uint32_t timer_frequency)
 {
  8001288:	b5b0      	push	{r4, r5, r7, lr}
@@ -1631,11 +1632,11 @@ void generateSineWave(uint32_t frequency, uint32_t amplitude, uint32_t timer_fre
  8001292:	60f8      	str	r0, [r7, #12]
  8001294:	60b9      	str	r1, [r7, #8]
  8001296:	607a      	str	r2, [r7, #4]
-	amplitude /= 2;
+	amplitude /= 2;		// Amplituda w argumencie ma zakres (0-4096) więc trzeba ją zmniejszyć do max. 2048
  8001298:	68bb      	ldr	r3, [r7, #8]
  800129a:	085b      	lsrs	r3, r3, #1
  800129c:	60bb      	str	r3, [r7, #8]
-	if(amplitude > 2047) amplitude = 2047;
+	if(amplitude > 2047) amplitude = 2047;	// Zabezpieczenie przez zbyt wielkimi wartościami
  800129e:	68bb      	ldr	r3, [r7, #8]
  80012a0:	f5b3 6f00 	cmp.w	r3, #2048	; 0x800
  80012a4:	d302      	bcc.n	80012ac <generateSineWave+0x24>
@@ -1736,6 +1737,7 @@ void generateSineWave(uint32_t frequency, uint32_t amplitude, uint32_t timer_fre
 
 08001390 <addSineWaveAt>:
 
+// Funkcja wstawiająca do tablicy próbek w wybranym miejscy sinusoidę o wybranej częstotliwości
 void addSineWaveAt(uint32_t frequency, uint32_t amplitude, uint32_t timer_frequency, uint32_t begin, uint32_t end)
 {
  8001390:	b5b0      	push	{r4, r5, r7, lr}
@@ -1767,6 +1769,7 @@ void addSineWaveAt(uint32_t frequency, uint32_t amplitude, uint32_t timer_freque
  80013c8:	f7ff fae0 	bl	800098c <__aeabi_d2f>
  80013cc:	4603      	mov	r3, r0
  80013ce:	61bb      	str	r3, [r7, #24]
+	// Zabezpieczenie przed przekroczniem wielkości tablicy
 	if(end > SAMPLE_NUMBER)
  80013d0:	6bbb      	ldr	r3, [r7, #56]	; 0x38
  80013d2:	f641 029c 	movw	r2, #6300	; 0x189c
@@ -1826,6 +1829,7 @@ void addSineWaveAt(uint32_t frequency, uint32_t amplitude, uint32_t timer_freque
  8001452:	eefd 7ae7 	vcvt.s32.f32	s15, s15
  8001456:	ee17 3a90 	vmov	r3, s15
  800145a:	617b      	str	r3, [r7, #20]
+		// Sygnały są ze sobą mieszane można więc na raz odtwarzać wiele częstotliwość
 		sound_wav[t] = sample + (int)sound_wav[t];
  800145c:	4a15      	ldr	r2, [pc, #84]	; (80014b4 <addSineWaveAt+0x124>)
  800145e:	69fb      	ldr	r3, [r7, #28]
@@ -1837,6 +1841,7 @@ void addSineWaveAt(uint32_t frequency, uint32_t amplitude, uint32_t timer_freque
  800146c:	4a11      	ldr	r2, [pc, #68]	; (80014b4 <addSineWaveAt+0x124>)
  800146e:	69fb      	ldr	r3, [r7, #28]
  8001470:	f842 1023 	str.w	r1, [r2, r3, lsl #2]
+		// Zabezpieczenie przed zbyt wielkimi wartościami
 		if(sound_wav[t] > 4095) sound_wav[t] = 4095;
  8001474:	4a0f      	ldr	r2, [pc, #60]	; (80014b4 <addSineWaveAt+0x124>)
  8001476:	69fb      	ldr	r3, [r7, #28]
@@ -1868,11 +1873,11 @@ void addSineWaveAt(uint32_t frequency, uint32_t amplitude, uint32_t timer_freque
  80014b4:	20000094 	.word	0x20000094
 
 080014b8 <initMelody_2>:
-	addSineWaveAt(2300, MAX_AMPLITUDE, TIMER_FREQUENCY, 5000, 5500);
 	addSineWaveAt(2500, MAX_AMPLITUDE, TIMER_FREQUENCY, 5500, 6000);
 	addSineWaveAt(3000, MAX_AMPLITUDE, TIMER_FREQUENCY, 6000, 6300);
 }
 
+// Funkcja genrując aprostą metlodię metodą proceduralną
 void initMelody_2(){
  80014b8:	b5b0      	push	{r4, r5, r7, lr}
  80014ba:	b090      	sub	sp, #64	; 0x40
@@ -1883,7 +1888,7 @@ void initMelody_2(){
  80014c4:	f44f 60fa 	mov.w	r0, #2000	; 0x7d0
  80014c8:	f7ff fede 	bl	8001288 <generateSineWave>
 
-	uint32_t freqArray[13] = {800, 1200, 1600, 1200, 800, 400, 900,
+	uint32_t freqArray[13] = {800, 1200, 1600, 1200, 800, 400, 900, 1800, 2200, 2500, 2000, 2500, 2900};
  80014cc:	4b19      	ldr	r3, [pc, #100]	; (8001534 <initMelody_2+0x7c>)
  80014ce:	463c      	mov	r4, r7
  80014d0:	461d      	mov	r5, r3
@@ -1895,7 +1900,7 @@ void initMelody_2(){
  80014dc:	c40f      	stmia	r4!, {r0, r1, r2, r3}
  80014de:	682b      	ldr	r3, [r5, #0]
  80014e0:	6023      	str	r3, [r4, #0]
-							  1800, 2200, 2500, 2000, 2500, 2900};
+
 	for(int i = 0; i < 13; i++)
  80014e2:	2300      	movs	r3, #0
  80014e4:	637b      	str	r3, [r7, #52]	; 0x34
@@ -2626,6 +2631,8 @@ int main(void)
  8001ae4:	f7ff faa0 	bl	8001028 <ball_handle_collision>
  8001ae8:	4603      	mov	r3, r0
  8001aea:	f887 3037 	strb.w	r3, [r7, #55]	; 0x37
+
+	  // Sprawdzenie wyniku ostatniej kolizji (1 lub 0) i sprawdzenie czy nie jest aktualnie odgrywana melodia
 	  if(collision == BALL_COLLISION_DETECTED && hdma_dac2.State == HAL_DMA_STATE_READY)
  8001aee:	f897 3037 	ldrb.w	r3, [r7, #55]	; 0x37
  8001af2:	2b00      	cmp	r3, #0
@@ -2636,6 +2643,7 @@ int main(void)
  8001afe:	2b01      	cmp	r3, #1
  8001b00:	d108      	bne.n	8001b14 <main+0xdc>
 	  {
+		  // Odtworzenie melodii przy uderzeniu w ścianę
 		  HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_2, (uint32_t*)sound_wav, SAMPLE_NUMBER, DAC_ALIGN_12B_R);
  8001b02:	2300      	movs	r3, #0
  8001b04:	9300      	str	r3, [sp, #0]

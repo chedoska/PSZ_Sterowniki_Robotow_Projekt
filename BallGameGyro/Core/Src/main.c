@@ -159,8 +159,11 @@ int main(void)
 
 	  // sprawdzenie warunku kolizji i aktualizacja prędkości
 	  WallHit collision = ball_handle_collision(&m_ball, 260, 0, 180, 0);
+
+	  // Sprawdzenie wyniku ostatniej kolizji (1 lub 0) i sprawdzenie czy nie jest aktualnie odgrywana melodia
 	  if(collision == BALL_COLLISION_DETECTED && hdma_dac2.State == HAL_DMA_STATE_READY)
 	  {
+		  // Odtworzenie melodii przy uderzeniu w ścianę
 		  HAL_DAC_Start_DMA(&hdac, DAC_CHANNEL_2, (uint32_t*)sound_wav, SAMPLE_NUMBER, DAC_ALIGN_12B_R);
 	  }
 
