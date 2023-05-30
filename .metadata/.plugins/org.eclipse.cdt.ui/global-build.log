@@ -917,3 +917,24 @@ arm-none-eabi-size   BallGameGyro.elf
   41804	     24	  27712	  69540	  10fa4	BallGameGyro.elf
 Finished building: default.size.stdout
  
+18:08:41 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41804	     24	  27712	  69540	  10fa4	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+18:11:18 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41804	     24	  27712	  69540	  10fa4	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
+18:59:38 **** Incremental Build of configuration Debug for project BallGameGyro ****
+make -j12 all 
+arm-none-eabi-size   BallGameGyro.elf 
+   text	   data	    bss	    dec	    hex	filename
+  41804	     24	  27712	  69540	  10fa4	BallGameGyro.elf
+Finished building: default.size.stdout
+ 
